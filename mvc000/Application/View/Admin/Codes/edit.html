@@ -1,0 +1,256 @@
+<?php
+include_once './Appliaction/View/Admin/public/head.html';
+?>
+<!-- main content -->
+<div id="page-content">
+    <!-- page header -->
+    <h1 id="page-header">代金券管理</h1>
+
+    <div class="fluid-container">
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+            <!-- row-fluid -->
+
+            <div class="row-fluid">
+                <article class="span12">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="widget-id-0">
+                        <header>
+                            <h2>Basic Elements</h2>
+                        </header>
+                        <!-- wrap div -->
+                        <div>
+
+                            <div class="jarviswidget-editbox">
+                                <div>
+                                    <label>Title:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div>
+                                    <label>Styles:</label>
+                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                    <span data-widget-setstyle="green" class="green-btn"></span>
+                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                    <span data-widget-setstyle="red" class="red-btn"></span>
+                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                    <span data-widget-setstyle="black" class="black-btn"></span>
+                                </div>
+                            </div>
+                            <div class="inner-spacer">
+                                <!-- content goes here -->
+                                <form class="form-horizontal themed" action="index.php?p=Admin&c=Voucher&a=save_edit"
+                                      enctype="multipart/form-data" method="post"/>
+                                <input type="hidden" name="id" value="<?=$row['code_id']?>">
+                                <fieldset>
+                                    <div class="control-group">
+                                        <label class="control-label" for="input01">代金券代码</label>
+                                        <div class="controls">
+                                            <input type="text" class="span12" id="input01" value="<?=$row['code']?>" readonly/>
+                                        </div>
+                                    </div>
+                                    <!--readonly-->
+                                    <div class="control-group">
+                                        <label class="control-label">所属会员</label>
+                                        <div class="controls">
+                                            <select name="user_id">
+                                                <?php foreach($vip as $v):?>
+                                                <option value="<?=$v['user_id']?>"<?php if($v['user_id']==$row['user_id']){echo "selected='selected'";}?>><?=$v['user_name']?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="input04">代金券金额</label>
+                                        <div class="controls">
+                                            <input class="span12 focused" id="input04" type="text" name="money" value="<?=$row['money']?>"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label">选择状态</label>
+                                        <div class="controls">
+                                            <label><input type="radio" name="status" value="0"
+                                                <?php echo  $row['status']==0?'checked="checked"':'' ?>/>未使用</label>
+                                            <label><input type="radio" name="status" value="1"
+                                                <?php echo  $row['status']==1?'checked="checked"':'' ?>/>已使用</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="reset" class="btn medium btn-danger">取消</button>
+                                        <button type="submit" class="btn medium btn-primary">提交</button>
+                                    </div>
+                                </fieldset>
+                                </form>
+                            </div>
+                            <!-- end content-->
+                        </div>
+                        <!-- end wrap div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+
+    <!-- end row-fluid -->
+
+
+    <div class="push"></div>
+
+    <!-- end .height-wrapper -->
+
+    <!-- footer -->
+
+            <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+            <script src="./Public/Admin/js/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="./Public/Admin/js/libs/jquery.min.js"><\/script>')</script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+            <script>window.jQuery.ui || document.write('<script src="./Public/Admin/js/libs/jquery.ui.min.js"><\/script>')</script>
+
+            <!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
+            <script src="./Public/Admin/js/include/jquery.ui.touch-punch.min.js"></script>
+
+            <!-- REQUIRED: Datatable components -->
+            <script src="./Public/Admin/js/include/jquery.accordion.min.js"></script>
+
+            <!-- REQUIRED: Toastr & Jgrowl notifications  -->
+            <script src="./Public/Admin/js/include/toastr.min.js"></script>
+            <script src="./Public/Admin/js/include/jquery.jgrowl.min.js"></script>
+
+            <!-- REQUIRED: Sleek scroll UI  -->
+            <script src="./Public/Admin/js/include/slimScroll.min.js"></script>
+
+            <!-- REQUIRED: Datatable components -->
+            <!-- DISABLED <script src="js/include/jquery.dataTables.min.js"></script> -->
+            <!-- DISABLED <script src="js/include/DT_bootstrap.min.js"></script> -->
+
+            <script type="text/javascript">
+                var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+                if (!ismobile) {
+
+                    /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
+
+                    /* REQUIRED: Datatable PDF/Excel output componant */
+
+                    /*-- document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>'); --*/
+                    /*-- document.write('<script src="js/include/TableTools.min.js"><\/script>'); --*/
+                    /*-- document.write('<script src="js/include/jquery.uniform.min.js"><\/script>'); --*/
+                    /*-- document.write('<script src="js/include/select2.min.js"><\/script>'); --*/
+                    document.write('<script src="./Public/Admin/js/include/jquery.excanvas.min.js"><\/script>');
+                    document.write('<script src="./Public/Admin/js/include/jquery.placeholder.min.js"><\/script>');
+
+                    /** DEMO SCRIPTS **/
+                    $(function () {
+                        /* show tooltips */
+                        $.jGrowl("I am the <strong>smartest Admin Template</strong> on <strong>wrapbootstrap.com</strong>. Don't forget to check out all my pages.", {
+                            header: 'Welcome, I am Jarvis!',
+                            sticky: false,
+                            life: 5000,
+                            speed: 500,
+                            theme: 'with-icon',
+                            position: 'top-right', //this is default position
+                            easing: 'easeOutBack',
+                            animateOpen: {
+                                height: "show"
+                            },
+                            animateClose: {
+                                opacity: 'hide'
+                            }
+                        });
+                    });
+                    /** end DEMO SCRIPTS **/
+
+                } else {
+
+                    /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
+
+                    document.write('<script src="./Public/Admin/js/include/selectnav.min.js"><\/script>');
+                    document.write('<script src="./Public/Admin/js/include/responsive-tables.min.js"><\/script>');
+                }
+            </script>
+
+            <!-- REQUIRED: iButton -->
+            <!-- DISABLED <script src="js/include/jquery.ibutton.min.js"></script> -->
+
+            <!-- REQUIRED: Justgage animated charts -->
+            <!-- DISABLED <script src="js/include/justgage.min.js"></script> -->
+            <!-- DISABLED <script src="js/include/raphael.2.1.0.min.js"></script> -->
+
+            <!-- REQUIRED: Animated pie chart -->
+            <script src="./Public/Admin/js/include/jquery.easy-pie-chart.min.js"></script>
+
+            <!-- REQUIRED: Functional Widgets -->
+            <script src="./Public/Admin/js/include/jarvis.widget.min.js"></script>
+            <script src="./Public/Admin/js/include/mobiledevices.min.js"></script>
+            <!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
+
+            <!-- REQUIRED: Full Calendar -->
+            <script src="./Public/Admin/js/include/jquery.fullcalendar.min.js"></script>
+
+            <!-- REQUIRED: Flot Chart Engine -->
+            <script src="./Public/Admin/js/include/jquery.flot.cust.min.js"></script>
+            <script src="./Public/Admin/js/include/jquery.flot.resize.min.js"></script>
+            <script src="./Public/Admin/js/include/jquery.flot.tooltip.min.js"></script>
+            <!-- DISABLED <script src="js/include/jquery.flot.orderBar.min.js"></script> -->
+            <!-- DISABLED <script src="js/include/jquery.flot.fillbetween.min.js"></script> -->
+            <!-- DISABLED <script src="js/include/jquery.flot.pie.min.js"></script> -->
+
+            <!-- REQUIRED: Sparkline Charts -->
+            <script src="./Public/Admin/js/include/jquery.sparkline.min.js"></script>
+
+            <!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
+            <!-- DISABLED  <script src="js/include/jquery.inbox.slashc.sliding-menu.js"></script> -->
+
+            <!-- REQUIRED: Form validation plugin -->
+            <!-- DISABLED <script src="js/include/jquery.validate.min.js"></script> -->
+
+            <!-- REQUIRED: Progress bar animation -->
+            <script src="./Public/Admin/js/include/bootstrap-progressbar.min.js"></script>
+
+            <!-- REQUIRED: wysihtml5 editor -->
+            <script src="./Public/Admin/js/include/wysihtml5-0.3.0.min.js"></script>
+            <script src="./Public/Admin/js/include/bootstrap-wysihtml5.min.js"></script>
+
+            <!-- REQUIRED: Masked Input -->
+            <!-- DISABLED  <script src="js/include/jquery.maskedinput.min.js"></script> -->
+
+            <!-- REQUIRED: Bootstrap Date Picker -->
+            <script src="./Public/Admin/js/include/bootstrap-datepicker.min.js"></script>
+
+            <!-- REQUIRED: Bootstrap Wizard -->
+            <!-- DISABLED  <script src="js/include/bootstrap.wizard.min.js"></script> -->
+
+            <!-- REQUIRED: Bootstrap Color Picker -->
+            <!-- DISABLED  <script src="js/include/bootstrap-colorpicker.min.js"></script> -->
+
+
+            <!-- REQUIRED: Bootstrap Time Picker -->
+            <!-- DISABLED  <script src="js/include/bootstrap-timepicker.min.js"></script> -->
+
+            <!-- REQUIRED: Bootstrap Prompt -->
+            <!-- DISABLED  <script src="js/include/bootbox.min.js"></script> -->
+
+            <!-- REQUIRED: Bootstrap engine -->
+            <script src="./Public/Admin/js/include/bootstrap.min.js"></script>
+
+            <!-- DO NOT REMOVE: Theme Config file -->
+            <script src="./Public/Admin/js/config.js"></script>
+
+            <!-- d3 library placed at the bottom for better performance -->
+            <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
+            <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
+            <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-2.js"></script> -->
+
+            <!-- Google Geo Chart -->
+            <!-- DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> -->
+            <!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
+            <!-- DISABLED <script src="js/include/adv_charts/geochart.js"></script> -->
+
+            <!-- end scripts -->
+
+    </body>
+    </html>

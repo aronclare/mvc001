@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>后台管理系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 新 Bootstrap5 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+  <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+  <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+  <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <!--横向导航-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="letter-spacing:0px;text-indent: 30px;">后 台 管 理 系 统</a>
+      <ul class="navbar-nav ml-auto navbar-user">
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
+            <? echo $_SESSION['username'];?>
+          </a>
+          <div class="dropdown-menu " style="min-width: 6rem;left: -4px;">
+            <a class="dropdown-item" href="#">个人资料</a>
+            <a class="dropdown-item" href="index.php?p=Admin&c=Login&a=logout">退出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--垂直导航-->
+  <div class="container-fluid mt-3 navbar-dark" style="background-color: #1b2130; width: 12%;min-width: 100px; float: left;height: 900px;" >
+    <ul class="nav flex-column bg-dark" >
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?p=Admin&c=Member&a=index">会员管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?p=Admin&c=Users&a=index">管理员</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">信息管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">项目管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">公告管理</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">系统管理</a>
+      </li>
+    </ul>
+  </div>

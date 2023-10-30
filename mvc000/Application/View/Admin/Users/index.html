@@ -1,0 +1,63 @@
+<?php
+include_once (__DIR__ . './../public/header.html');
+?>
+<!--data list-->
+<div id="page-wrapper" class="mt-3" style="width: 88%;float: right;">
+    <div class="col-md-4" style="padding-left: 30px;">
+        <h3>管理员</h3>
+    </div>
+    <div class="row">
+
+        <div class="col-md-4" style="padding-left: 30px;padding-top: 40px;">
+            <a href="index.php?p=Admin&c=Users&a=add" class="btn btn-success">添加</a>
+            <a href="javascript:void(0);" id="btnBatchUpdateSort" class="btn btn-info">保存排序</a>
+        </div>
+        <div class="col-md-4 mt-4">
+            <form action="{:U('platform/index')}" method="post">
+                <div class="form-group input-group">
+                    <input type="text" class="form-control" name="key" placeholder="输入名称搜索">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <form name="frmCategory" id="frmCategory" action="{:U('batchUpdateSort')}" method="post">
+        <table class="table table-hover  table-striped">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>用户名</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>头像</th>
+                <th>创建时间</th>
+                <th>上次登陆时间</th>
+                <th>上次登陆ip</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($rows as $row):?>
+                <tr>
+                    <td><?=$row['user_id']?></td>
+                    <td><?=$row['username']?></td>
+                    <td><?=$row['telephone']?></td>
+                    <td><?=$row['email']?></td>
+                    <td><img src="<?=$row['photo']?>" alt="" style="width: 80px;height: 50px;"></td>
+                    <td><?=$row['create_time']?></td>
+                    <td><?=$row['last_login_time']?></td>
+                    <td><?=$row['last_login_ip']?></td>
+                    <td><label for="status"><?php if($row['status']==1){echo '开启';}else{echo '禁用';}?></label></td>
+                    <td><a href="index.php?p=Admin&a=edit&c=Users&user_id=<?=$row['user_id']?>">编辑</a> | <a href="index.php?p=Admin&a=delete&c=Users&user_id=<?=$row['user_id']?>" style="color:red;" onclick="javascript:return del('您真的确定要删除吗？\n\n删除后将不能恢复!');">删除</a></td>
+                </tr>
+            <?php endforeach;?>
+            </tbody>
+        </table>
+    </form>
+    <div style="text-align: center;"> <?=$pageHtml?></div>
+</div>
+</div>
+</body>

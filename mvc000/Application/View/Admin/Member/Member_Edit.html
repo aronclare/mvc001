@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/skin_/form.css" />
+    <link href="./public/Admin/umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./public/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/global.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/jquery.select.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/WdatePicker.js"></script>
+    <script type="text/javascript">
+        window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
+    </script>
+    <script type="text/javascript" src="./public/Admin/js/umeditor.config.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/editor_api.js"></script>
+    <script type="text/javascript" src="./public/Admin/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <title>基础信息</title>
+</head>
+
+<body>
+<form action="index.php?p=Admin&c=Member&a=save_edit" method="post" enctype="multipart/form-data">
+    <div id="container">
+        <div id="hd">
+        </div>
+        <div id="bd">
+            <div id="main">
+                <h2 class="subfild">
+                    <span>基本信息</span>
+                </h2>
+                <div class="subfild-content base-info">
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>员工账号</label>
+                        <div class="kv-item-content">
+                            <input type="text" placeholder="员工账号" name="username" value="<?=$row['username']?>"/>
+                        </div>
+                        <span class="kv-item-tip">必填</span>
+                    </div>
+                    <div class="kv-item ue-clear time">
+                        <label><span class="impInfo">*</span>员工密码</label>
+                        <div class="kv-item-content">
+                            <input type="password"  name="test" value="<?=$row['password']?>"/>
+                            <i class="time-icon"></i>
+                        </div>
+                        <span class="kv-item-tip error">必填</span>
+                    </div>
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>员工姓名</label>
+                        <div class="kv-item-content">
+                            <input type="text" placeholder="员工姓名" name="realname" value="<?=$row['realname']?>"/>
+                        </div>
+                        <span class="kv-item-tip">必填</span>
+                    </div>
+
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>员工电话</label>
+                        <div class="kv-item-content">
+                            <input type="text" value="<?=$row['telephone']?>" placeholder="员工电话" name="telephone" />
+                        </div>
+                        <span class="kv-item-tip">必填</span>
+                    </div>
+
+                    <div class="kv-item ue-clear">
+                        <label>所属部门</label>
+                        <div class="kv-item-content">
+                            <select name="group_id">
+                                <?php foreach($rows as $row):?>
+                                <option value="<?=$row['group_id']?>"><?=$row['name']?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                        <span class="kv-item-tip success">成功信息</span>
+                    </div>
+                    <div class="kv-item ue-clear">
+                        <label>设置管理员</label>
+                        <div class="kv-item-content">
+                            <select name="is_admin">
+                                <option value="1" <?=$row['is_admin']==0?'selected':''?>>后台普通权限</option>
+                                <option value="2" <?=$row['is_admin']==1?'selected':''?>>后台管理员权限</option>
+                            </select>
+                        </div>
+                        <span class="kv-item-tip success">成功信息</span>
+                    </div>
+
+                    <div class="kv-item ue-clear">
+                        <label>员工性别</label>
+                        <div class="kv-item-content">
+                    	<span class="choose">
+                            <span class="checkboxouter">
+                                <input type="radio" name="sex" value="2" <?=$row['sex']==1?'checked':''?>/>
+                                <span class="radio"></span>
+                            </span>
+                            <span class="text">男</span>
+                        </span>
+                            <span class="choose">
+                            <span class="checkboxouter">
+                                <input type="radio" name="sex" value="1" <?=$row['sex']==1?'checked':''?>/>
+                                <span class="radio"></span>
+                            </span>
+                            <span class="text">女</span>
+                        </span>
+
+                        </div>
+                        <span class="kv-item-tip">标题字数限制在35个字符</span>
+                    </div>
+
+
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>员工头像</label>
+                        <div class="kv-item-content file">
+                            <span class="text"></span>
+                            <input type="file" name="photo"/>
+                            <input type="button" class="button normal long2" value="选择文件" />
+                        </div><img src="<?=$row['photo']?>" alt="">
+                        <span class="kv-item-tip"></span>
+                    </div>
+                </div>
+
+
+                <div class="buttons">
+                    <input class="button" type="submit" value="确认提交" />
+                    <a type="button" class="btn btn-success" href="index.php?p=Admin&c=Member&a=Index">返回列表</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+
+<script type="text/javascript">
+    $('select').select();
+    showRemind('input[type=text],textarea','color5');
+    UM.getEditor('content');
+</script>
+</html>

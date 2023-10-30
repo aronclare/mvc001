@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/skin_/form.css" />
+    <link href="./public/Admin/umeditor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./public/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/global.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/jquery.select.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/WdatePicker.js"></script>
+    <script type="text/javascript">
+        window.UMEDITOR_HOME_URL = 'umeditor/';  // 请换成绝对路径
+    </script>
+    <script type="text/javascript" src="./public/Admin/js/umeditor.config.js"></script>
+    <script type="text/javascript" src="./public/Admin/js/editor_api.js"></script>
+    <script type="text/javascript" src="./public/Admin/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <title>基础信息</title>
+</head>
+
+<body>
+<form action="index.php?p=Admin&c=Groups&a=save_add" method="post" enctype="multipart/form-data">
+    <div id="container">
+        <div id="hd">
+        </div>
+        <div id="bd">
+            <div id="main">
+                <h2 class="subfild">
+                    <span>基本信息</span>
+                </h2>
+                <div class="subfild-content base-info">
+                    <div class="kv-item ue-clear">
+                        <label><span class="impInfo">*</span>部门名称</label>
+                        <div class="kv-item-content">
+                            <input type="text" placeholder="部门名称" name="username"/>
+                        </div>
+                        <span class="kv-item-tip">必填</span>
+                    </div>
+
+                <div class="buttons">
+                    <input class="button" type="submit" value="确认提交" />
+                    <a type="button" class="btn btn-success" href="index.php?p=Admin&c=Member&a=Index">返回列表</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+
+<script type="text/javascript">
+    $('select').select();
+    showRemind('input[type=text],textarea','color5');
+    UM.getEditor('content');
+</script>
+</html>

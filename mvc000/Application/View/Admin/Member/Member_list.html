@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/skin_/table.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/jquery.grid.css" />
+
+
+    <title>表格</title>
+</head>
+<body>
+<div class="form-div">
+    <form action="index.php?p=Admin&c=Member&a=Index" method="get">
+        <span>serach</span>
+        <input type="hidden" name="p" value="Admin"/>
+        <input type="hidden" name="c" value="Member"/>
+        <input type="hidden" name="a" value="index"/>
+        <input type="text" name="keywords" size="15" />
+        <input type="submit" value=" 搜索 " class="button" />
+    </form>
+</div>
+<span><a href="index.php?p=Admin&a=add&c=Member">添加管理员</a></span>
+<table width="1000">
+    <tr>
+        <th>ID</th>
+        <th>后台账号</th>
+        <th>密码</th>
+        <th>员工姓名</th>
+        <th>员工性别</th>
+        <th>员工电话</th>
+        <th>所属部门</th>
+        <th>最后登录时间</th>
+        <th>是否为管理员</th>
+        <th>头像</th>
+
+        <th>操作</th>
+    </tr>
+    <?php foreach($rows as $row):?>
+    <tr>
+        <td><?=$row['member_id']?></td>
+        <td><?=$row['username']?></td>
+        <td><?=$row['password']?></td>
+        <td><?=$row['realname']?></td>
+        <td><?=$row['sex']==1?'男':'女'?></td>
+        <td><?=$row['telephone']?></td>
+        <td><?=$row['group_id']?></td>
+        <td><?=date('Y-m-d',$row['last_login'])?></td>
+        <td><?=$row['is_admin']==1?'是':'否'?></td>
+        <td>
+            <img src="<?=$row['photo']?>"  width="50">
+        </td>
+        <td>
+            <a href="index.php?p=Admin&c=Member&a=Edit&member_id=<?=$row['member_id']?>">编辑</a>&nbsp;/
+            <a href="index.php?p=Admin&c=Member&a=Delete&member_id=<?=$row['member_id']?>">移除</a>
+        </td>
+    </tr>
+    </tr>
+    <?php endforeach;?>
+    <div style="text-align: center">
+
+    </div>
+</table>
+<?=$pageHtml?>

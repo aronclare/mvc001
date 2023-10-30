@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/WdatePicker.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/skin_/table.css" />
+    <link rel="stylesheet" type="text/css" href="./public/Admin/css/jquery.grid.css" />
+
+
+    <title>表格</title>
+</head>
+<body>
+<div class="form-div">
+    <form action="index.php?p=Admin&c=Code&a=Index" method="get">
+        <span>serach</span>
+        <input type="hidden" name="p" value="Admin"/>
+        <input type="hidden" name="c" value="Code"/>
+        <input type="hidden" name="a" value="index"/>
+        <input type="text" name="keywords" size="15" />
+        <input type="submit" value=" 搜索 " class="button" />
+    </form>
+</div>
+<span><a href="index.php?p=Admin&a=add&c=Code">添加代金券</a></span>
+<table width="1000">
+    <thead >
+    <tr >
+        <th>ID</th>
+        <th>代金券码</th>
+        <th>持有人</th>
+        <th>金额</th>
+        <th>状态</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <?php foreach($rows as $row):?>
+	     <tr>
+            <td><?=$row['code_id']?></td>
+            <td><?=$row['code']?></td>
+            <td><?=$row['user_id']?></td>
+            <td><?=$row['money']?></td>
+            <td><?=$row['status']==0?'未使用':'已使用'?></td>
+            <td>
+                  <a href="index.php?p=Admin&c=Code&a=edit&code_id=<?=$row['code_id']?>">编辑</a>&nbsp;/
+                  <a href="index.php?p=Admin&c=Code&a=delete&code_id=<?=$row['code_id']?>">移除</a>
+            </td>
+        </tr>
+    <?php endforeach;?>
+</table>
+<!--<div class="inline pull-right page">-->
+    <!--<span>总共:<?=$rows['total_page']?>页 &emsp;&emsp;&emsp;</span>-->
+    <!--<a href="index.php?<?=$rows['url']?>&page=1">首页</a>-->
+    <!--<a href="index.php?<?=$rows['url']?>&page=<?=$rows['page']+1?>">下一页</a>-->
+    <!--<a href="index.php?<?=$rows['url']?>&page=<?=$rows['page']-1?>">上一页</a>-->
+    <!--<a href="index.php?<?=$rows['url']?>&page=<?=$rows['total']?>">末页</a>-->
+<!--</div>-->
+</body>
+<?=$pageHtml?>
+</html>

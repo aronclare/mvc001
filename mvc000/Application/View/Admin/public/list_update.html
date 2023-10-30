@@ -1,0 +1,40 @@
+<include file="Public/header" title="修改项目" />
+<div id="page-wrapper">
+    <form method="post" action="{:U('notice/update')}" id="update_form" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$model.id}">
+        <div class="form-group">
+            <label for="name">项目名称</label>
+            <input type="text" name="name" class="form-control" id="name" value="{$model.name}" placeholder="输入项目名称">
+        </div>
+        <div class="form-group">
+            <label for="post-picture">项目详情</label>
+            <script id="post-picture" name="memo" value="{$model.memo}" type="text/plain">{$model.memo|htmlspecialchars_decode}</script>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">更新</button>
+    </form>
+</div>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+<include file="Public/footer" />
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('post-picture',{
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo','bold', 'italic', 'underline','fontborder', 'strikethrough', '|','emotion', '|', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote','searchreplace', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc'],
+            ['inserttable','insertrow', 'insertcol','mergeright', 'mergedown','deleterow', 'deletecol','splittorows','splittocols', 'splittocells','deletecaption','inserttitle', 'mergecells', 'deletetable','insertparagraphbeforetable', 'paragraph','fontsize','fontfamily']
+        ],
+        initialFrameHeight:500,
+        zIndex:100
+    });
+    ue.ready(function() {
+        //设置编辑器的内容
+//        ue.setContent('各位人事推广请在此处输入内容哦~');
+        //获取html内容，返回: <p>hello</p>
+        var html = ue.getContent();
+        //获取纯文本内容，返回: hello
+        var txt = ue.getContentTxt();
+    });
+</script>

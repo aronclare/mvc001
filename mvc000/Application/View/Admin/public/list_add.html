@@ -1,0 +1,123 @@
+<include file="Public/header" title="添加项目" />
+<div id="page-wrapper">
+
+
+    <form method="post" action="{:U('platform/add')}" id="update_form" enctype="multipart/form-data">
+
+
+        <div class="form-group">
+            <label for="aa">平台名称</label>
+            <input type="text" name="platform_name" class="form-control" id="platform_name" placeholder="输入平台名称">
+        </div>
+        <div class="form-group">
+            <label for="mm">排序</label>
+            <input type="text" name="sort" class="form-control" style="width: 150px;" placeholder="输入排序序号">
+        </div>
+
+        <!--<div class="form-group">-->
+        <!--<label for="post-content">项目详情</label>-->
+        <!--<script id="post-content" name="explain" type="text/plain"></script>-->
+        <!--</div>-->
+
+        <div class="control-group">
+            <label>允许上传图片格式：('jpg', 'gif', 'png', 'jpeg')</label>
+            <input type="file" name="img_url" placeholder="" datatype="*2-50" nullmsg="png" errormsg="png" />
+        </div>
+        <!--<hr>-->
+        <!--<div>-->
+        <!--<div class="control-group">-->
+        <!--<label for="application_type">I P：</label>-->
+        <!--&lt;!&ndash;<label ><input type="radio" name="ip_repeatability" value="0" <if condition="$model.ip_repeatability eq 0">checked="checked"</if>>可以重复</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<label><input type="radio" name="ip_repeatability" value="1" <if condition="$model.ip_repeatability eq 1">checked="checked"</if>>不能重复</label>&ndash;&gt;-->
+        <!--该IP可以申请的次数为：<input type="number" name="ip_repeatability_repeat" value="{$model.ip_repeatability_repeat}" style="width:50px; text-align:center;" />-->
+        <!--</div>-->
+        <!--<div class="control-group">-->
+        <!--<label for="application_type">会员账号：</label>-->
+        <!--<label><input type="radio" name="username_repeatability" value="0" checked="checked">可以重复</label>-->
+        <!--<label><input type="radio" name="username_repeatability" value="1">不能重复</label>-->
+        <!--</div>-->
+        <!--<div class="control-group">-->
+        <!--<label for="member_name">会员姓名：</label>-->
+        <!--<label><input type="radio" name="member_name_repeatability" value="0" checked="checked">可以重复</label>-->
+        <!--<label><input type="radio" name="member_name_repeatability" value="1">不能重复</label>-->
+        <!--</div>-->
+
+
+
+        <!--<div class="control-group">-->
+        <!--<label for="betqd_day">投注签到天数：</label>-->
+        <!--<select name="betqd_day" id="shouji" size="1">-->
+        <!--<option value="1" <if condition="$model.betqd_day eq 1">selected</if>>显示</option>-->
+        <!--<option value="2" <if condition="$model.betqd_day eq 2">selected</if>>隐藏</option>-->
+        <!--</select>-->
+        <!--排序：<input type="number" name="betqd_day_sort" value="{$model.betqd_day_sort}" style="width:50px; text-align:center;" />-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="control-group">-->
+        <!--<label for="virtual_coin">虚拟币钱包：</label>-->
+        <!--<select name="virtual_coin" id="virtual_coin" size="1">-->
+        <!--<option value="1" <if condition="$model.virtual_coin eq 1">selected</if>>显示</option>-->
+        <!--<option value="2" <if condition="$model.virtual_coin eq 2">selected</if>>隐藏</option>-->
+        <!--</select>-->
+        <!--排序：<input type="number" name="virtual_coin_sort" value="{$model.virtual_coin_sort}" style="width:50px; text-align:center;" />-->
+        <!--</div>-->
+        <!--<div class="control-group">-->
+        <!--<label for="money_bag1">钱包选择:</label>-->
+        <!--<label><input type="radio" name="money_bag" value="0" <if condition="$model.money_bag eq 0">checked="checked"</if>>GoPay钱包</label>-->
+        <!--<label><input type="radio" name="money_bag" value="1" <if condition="$model.money_bag eq 1">checked="checked"</if>>VIP钱包</label>-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="control-group">-->
+        <!--<label for="charge_money">充值金额：</label>-->
+        <!--<select name="charge_money" id="charge_money" size="1">-->
+        <!--<option value="1" <if condition="$model.charge_money eq 1">selected</if>>显示</option>-->
+        <!--<option value="2" <if condition="$model.charge_money eq 2">selected</if>>隐藏</option>-->
+        <!--</select>-->
+        <!--排序：<input type="number" name="charge_money_sort" value="{$model.charge_money_sort}" style="width:50px; text-align:center;" />-->
+        <!--</div>-->
+
+        <!--<button type="button" name="btnAllHide" id="btnAllHide" class="btn btn-info">一键全部隐藏</button>-->
+        <!--<button type="button" name="btnAllShow" id="btnAllShow" class="btn btn-success">一键全部显示</button>-->
+        <button type="submit" class="btn btn-default">添加</button>
+    </form>
+</div>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+
+<include file="Public/footer" />
+<script type="text/javascript">
+    $(function () {
+        $("#btnAllHide").click(function () {
+            $("select").val("2");
+        });
+        $("#btnAllShow").click(function () {
+            $("select").val("1");
+        });
+    });
+    var ue = UE.getEditor('post-content', {
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo', 'bold', 'italic', 'underline', 'fontborder', 'strikethrough', '|', 'simpleupload', 'insertimage', 'emotion', 'link', 'unlink', '|', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'searchreplace', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc'],
+            ['inserttable', 'insertrow', 'insertcol', 'mergeright', 'mergedown', 'deleterow', 'deletecol', 'splittorows', 'splittocols', 'splittocells', 'deletecaption', 'inserttitle', 'mergecells', 'deletetable', 'insertparagraphbeforetable', 'paragraph', 'fontsize', 'fontfamily']
+        ],
+        initialFrameHeight: 500,
+        zIndex: 100
+    });
+    ue.ready(function () {
+        //设置编辑器的内容
+        ue.setContent('');
+        //获取html内容，返回: <p>hello</p>
+        var html = ue.getContent();
+        //获取纯文本内容，返回: hello
+        var txt = ue.getContentTxt();
+    });
+    //    var ue = UE.getEditor('post-picture',{
+    //        toolbars: [
+    //            [ 'simpleupload']
+    //        ],
+    //        initialFrameHeight:500,
+    //        zIndex:100
+    //    });
+</script>

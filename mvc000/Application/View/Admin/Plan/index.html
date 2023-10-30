@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>会员列表 </title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<!--搜索部分-->
+<div class="form-div">
+    <form action="index.php" name="searchForm"  method="get">
+        <input type="hidden" name="a" value="index"/>
+        <input type="hidden" name="c" value="Plan"/>
+        <input type="text" name="keywords" size="15" />
+        <input type="submit" value=" 搜索 " class="button" />
+    </form>
+</div>
+<!--表单部分-->
+<form method="post" >
+    <div>
+        <table cellpadding="3" cellspacing="1" border="1px">
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>描述</th>
+                <th>套餐价格</th>
+                <th>状态</th>
+                <th>添加时间</th>
+                <th>操作</th>
+            </tr>
+            <?php foreach($rows as $row):?>
+            <tr>
+                <td class="first-cell"><?=$row['plan_id']?></td>
+                <td align="center"><?=$row['name']?></td>
+                <td align="center"><?=$row['des']?></td>
+                <td align="center"><?=$row['money']?></td>
+                <td align="center"><?php if($row['status']==1):echo"上线";elseif($row['status']==0):echo"下线";endif;?></td>
+                <td align="center"><?=date('Y-m-d',$row['add_time'])?></td>
+                <td align="center">
+                <a href="index.php?p=Admin&a=edit&c=Plan&plan_id=<?=$row['plan_id']?>">修改</a> |
+                <a href="index.php?p=Admin&a=delete&c=Plan&plan_id=<?=$row['plan_id']?>">删除</a>
+                </td>
+            </tr>
+            <?php endforeach;?>
+            <tr>
+                <!-- 分页开始 -->
+                <?=$pageHtml?>
+                <!-- 分页结束 -->
+               <!--<td align="right" nowrap="true" colspan="6">
+                    <div id="turn-page">
+                        总计 <span id="totalRecords">11</span>
+                        个记录分为 <span id="totalPages">1</span>
+                        页当前第 <span id="pageCurrent">1</span>
+                        页，每页 <input type='text' size='3' id='pageSize' value="15" />
+                        <span id="page-link">
+                            <a href="#">第一页</a>
+                            <a href="#">上一页</a>
+                            <a href="#">下一页</a>
+                            <a href="#">最末页</a>
+                            <select id="gotoPage">
+                                <option value='1'>1</option>
+                            </select>
+                        </span>
+                    </div>
+                </td>  -->
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<form action="index.php?p=Admin&c=Code&a=save_edit" method="post">
+<table class="table table-bordered table-hover definewidth m10">
+    <tr>
+        <td width="10%" class="tableleft">代金券代码</td>
+        <input type="text" name = 'code_id'value="<?=$row['code_id']?>">
+        <td><input type="text" name="code" value="<?=$row['code']?>"/></td>
+    </tr>
+    <tr>
+        <td width="10%" class="tableleft">代金券金额</td>
+        <td><input type="text" name="money" value="<?=$row['money']?>" /></td>
+    </tr>
+    <tr>
+        <td width="10%" class="tableleft">选择持有人</td>
+        <td>
+            <select name="user_id">
+                <option value="0">选择持有人</option>
+                <?php foreach($rs as $ro):?>
+                <option value="<?=$ro['user_id']?>"
+                <?=$ro['user_id']==$row['user_id']?'selected':''?> ><?=$ro['realname']?></option>
+                <?php endforeach;?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft">选择状态</td>
+        <td>
+            <select name="status" >
+                <option value="1" <?=$row['status']==1?'selected':''?>>已使用</option>
+                <option value="0" <?=$row['status']==0?'selected':''?>>未使用</option>
+            </select>
+        </td>
+
+    </tr>
+
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <button type="submit" class="btn btn-primary" type="button">保存</button>&nbsp;&nbsp;
+            <a type="button" class="btn btn-success" href="index.php?p=Admin&c=Group&a=Index">返回列表</a>
+        </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

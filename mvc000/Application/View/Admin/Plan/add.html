@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加会员表单</title>
+</head>
+<body>
+<form enctype="multipart/form-data" action="index.php?p=Admin&a=save_add&c=Plan" method="post">
+    <h1>会员添加表单</h1>
+    <table width="90%" id="general-table" align="center">
+        <tr>
+            <td >名称：</td>
+            <td><input type="text" name="name" value=""size="30" />
+                <span class="require-field">*</span></td>
+        </tr>
+        <tr>
+            <td class="label">描述：</td>
+            <td>
+                <textarea name="des" cols="40" rows="3"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">套餐价格：</td>
+            <td>
+                <input type="text" name="money" size="20" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label">状态：</td>
+            <td>
+                <label><input type="radio" name="status" value="1"/>上线</label>
+                <label><input type="radio" name="status" value="0"/>下线</label>
+            </td>
+        </tr>
+    </table>
+    <div class="button-div">
+        <input type="submit" value=" 确定 " class="button"/>
+        <input type="reset" value=" 重置 " class="button" />
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回显会员表单</title>
+</head>
+<body>
+<form enctype="multipart/form-data" action="index.php?p=Admin&a=save_edit&c=Plan" method="post">
+    <h1>显示要修改的会员表单</h1>
+    <input type="hidden" name="plan_id" value="<?=$plan_id?>"/>
+    <table width="90%" id="general-table" align="center">
+        <tr>
+            <td >名称：</td>
+            <td><input type="text" name="name" value="<?=$row['name']?>" />
+                <span class="require-field">*</span></td>
+        </tr>
+        <tr>
+            <td class="label">描述：</td>
+            <td>
+                <textarea name="des" cols="40" rows="3"><?=$row['des']?></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">套餐价格：</td>
+            <td>
+                <input type="text" name="money" value="<?=$row['money']?>" size="20" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label">状态：</td>
+            <td>
+                <label><input type="radio" name="status" value="1"<?php if($row['status']==1)
+                            {echo 'checked="checked"';}?>/>上线</label>
+                <label><input type="radio" name="status" value="0"<?php if($row['status']==0)
+                            {echo 'checked="checked"';}?>/>下线</label>
+            </td>
+        </tr>
+    </table>
+    <div class="button-div">
+        <input type="submit" value=" 确定 " class="button"/>
+        <input type="reset" value=" 重置 " class="button" />
+    </div>
+</form>
+
+</body>
+</html>
