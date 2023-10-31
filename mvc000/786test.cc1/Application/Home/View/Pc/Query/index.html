@@ -1,0 +1,40 @@
+
+    <div id="v_alert">
+        <div class="box info">
+            <div class="title"><span>审核进度查询</span></div>
+            <div class="content promotionsBox" name="category">
+                <div class="form">
+                    <ul>
+                        <li><label>会员账号：</label><span class="ipt_wraper"><input type="text" id="username" name="username" placeholder="请输入会员账号" ></span></li>
+                        <li><label>查询项目：</label>
+                            <span class="ipt_wraper">
+                          <dl class="select">
+                            <dt><span>请选择查询项目</span><input type="hidden" id="id" value=""></dt>
+                            <dd>
+                                <foreach name="apps" item="v">
+                                    <a rel_value="{$v.id}">{$v.name}</a>
+                                 </foreach>
+                            </dd>
+                          </dl>
+                              </span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="buttons">
+                    <a href="javascript:void(0)" onclick="kill_query_window()" class="blue">关闭窗口</a>
+                    <a href="javascript:void(0)" onclick="submit_query()" class="query_btn">点击查询</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+

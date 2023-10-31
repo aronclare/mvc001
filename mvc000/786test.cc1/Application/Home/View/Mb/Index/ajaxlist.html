@@ -1,0 +1,68 @@
+	
+							<div id="applyPopup" class="popup">
+	
+		
+							<div class="popupTitle"></div>
+							<a href="javascript:;" class="popupClose"></a>
+							<div class="adName" id="objtitle">初次相遇 豪礼相赠</div>
+							
+							
+							<form id="myForm" onsubmit="return false" action="##" method="post">
+							
+							<input  type="hidden"  name="cate_id" id="cate_id" value="">
+							<input type="hidden" name="name" value="{$info.name}">
+							<input type="text" name="username1" id="username1" placeholder="请填写会员ID" />
+							
+							
+						
+							<div id="uli" style="display:none;">	
+								
+								<input type="text" name="sendmoney" id="sendmoney" placeholder="新会员注册彩金" readonly/>
+								
+								<!--
+								<select id="set_bonus" name="set_bonus" class="selectList">
+								<option value="10%">新会员注册彩金</option>
+								<option value="20%">连续登陆3天</option>
+								<option value="35%">连续登录7天</option>
+								<option value="40%">晋升至VIP2</option>
+								<option value="50%">晋升至VIP3</option>
+								</select>
+								-->
+							</div>
+							
+						 <div id="uli2" style="display:none;">									
+								<select id="application_type" name="application_type" class="selectList">								
+								<option value="">请选择方案</option>									
+								<option value="1">方案1</option>
+								<option value="2">方案2</option>
+								</select>								
+							</div>
+		 
+		
+					<!-- 	<if condition="$info.set_bonus eq 1">
+								<label>存款优惠：</label>
+								<select id="set_bonus" name="set_bonus" class="ipt_wraper"><option value="10%">10%</option><option value="20%">20%</option><option value="35%">35%</option></select>
+							</if> -->
+							
+							<foreach name="fields" item="vo">
+							   
+							   <input type="text" id="{$vo.name}" name="{$vo.name}" placeholder="请输入{$vo.title}">
+							   
+							</foreach> 
+							
+							<div class="fields">	
+							
+							
+							</div>
+							<div class="idCode">			
+								<input type="text" name="verify" id="verify"  placeholder="请填写验证码" />
+								<img src="index.php/game/verify.html" id="verify_img" class="verify" onClick="this.src=this.src+'?'+Math.random()"/>
+							</div>
+									
+							<a href="javascript:;" class="popupBtn" onclick="submit_apply()">
+							<img src="__PUBLIC__/Home/Mb/img/CXpopupBtn.png"/>
+							</a>
+							
+							</form>
+							
+						</div>

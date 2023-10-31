@@ -1,0 +1,56 @@
+
+<div id="v_alert">
+    <div class="form">
+        <form id="myForm" onsubmit="return false" action="##" method="post">
+            {__TOKEN__}
+        <p><strong>申请项目</strong></p>
+        <p>{$info.name}</p>
+        <ul>
+            <input  type="hidden"  name="cate_id" id="cate_id" value="{$info.id}">
+            <input type="hidden" name="name" value="{$info.name}">
+            <if condition="$info.id neq 100000">
+            <li><label>会员账号：</label><span class="ipt_wraper"><input type="text" id="username" name="username" placeholder="请输入会员账号"></span></li>
+            </if>
+
+			<if condition="$info.set_bonus eq 1">
+			<li><label>存款优惠：</label><select id="set_bonus" name="set_bonus" class="ipt_wraper"><option value="10%">10%</option><option value="20%">20%</option><option value="35%">35%</option></select></li>
+			</if>
+			
+            <foreach name="fields" item="vo">
+                <li>
+                    <label>{$vo.title}：</label>
+                    <span class="ipt_wraper"><input type="text" id="{$vo.name}" name="{$vo.name}" placeholder="请输入{$vo.title}"></span>
+                </li>
+            </foreach>
+            <li><label>验证码：</label><span class="ipt_wraper"><input type="text" id="verify" name="verify" maxlength="4" placeholder="验证码"></span><span class="qrcode"><img src="{:U('verify')}" id="verify_img" class="verify" alt="点击刷新" maxlength="4"></span></li>
+
+        </ul>
+        <p class="buttons_area">
+            <!--<input type="button" class="submit_apply" onclick="submit_apply()">-->
+
+            <button class="submit_apply" onclick="submit_apply()"></button>
+        </p>
+        </form>
+    </div>
+</div>
+<script>
+
+
+	//执行一个laydate实例
+	laydate.render({
+	  elem: '#application_date' //指定元素
+	});
+
+    function chgVerify(){
+        var src = "{:U('verify')}";
+        var random = Math.floor(Math.random() * (1000 + 1));
+        $("#verify_img").attr("src", src + (src.indexOf('?') == -1 ? '?' : '&') + "random=" + random);
+
+    }
+    $(function () {
+        $(".verify").click(function () {
+            chgVerify();
+        });
+    });
+
+</script>

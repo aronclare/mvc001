@@ -1,0 +1,120 @@
+<include file="Public/header" title="信息列表" />
+<script src="__PUBLIC__/Admin/Admin/laydate/laydate.js"></script>
+<script src="__PUBLIC__/Admin/Admin/js/jquery-1.8.3.min.js"></script>
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="form-group" style="margin-top:30px;">
+            <!--<form action="{:U('category/index')}" method="post">-->
+            <form action="{:U('gamedata/index')}" method="get">
+                <label style="font-size: 18px;">用户名：</label>
+                <input type="text" class="demo-input"  id="username" name="username" style="height: 25px;width: 150px;">
+                <label style="font-size: 18px;">执行时间：</label>
+                <input type="text" class="demo-input" placeholder="请选择日期" id="creat_time" name="creat_time" style="height: 25px;width: 200px;">
+                <input type="submit" value="查询" style="font-size: 18px;">
+                <input type="button" value="导入数据" onclick="href()" style="font-size: 18px;">
+            </form>
+            <!--</form>-->
+        </div>
+        <script>
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#creat_time' //指定元素
+            });
+
+            function href() {
+                window.location.href = "{:U('import')}";
+            }
+
+        </script>
+    </div>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th value="11">ID</th>
+                <th value="11">编号</th>
+                <th>站台序号</th>
+                <th>返水日期</th>
+                <th>执行时间</th>
+                <th>会员帐号</th>
+                <th>代理帐号</th>
+                <th>产品类型</th>
+                <th>笔数</th>
+                <th>有效金额</th>
+                <th>返水金额</th>
+                <th>派彩金额</th>
+                <th>设置</th>
+            </tr>
+        </thead>
+        <tbody>
+        <foreach name="Data" item="v">
+            <tr>
+                <td name="$header[1][1]" value="11">{$v.id}</td>
+                <td>{$v.xuid}</td>
+                <td>{$v.platform_number}</td>
+                <td>{$v.water_time|date="Y/m/d H:i:s",###}</td>
+                <td>{$v.creat_time|date="Y/m/d H:i:s",###}</td>              
+                <td>{$v.username}</td>
+                <td>{$v.proxy_account}</td>
+                <td>{$v.types}</td>
+                <td>{$v.betnum}</td>
+                <td>{$v.total_amount}</td>
+                <td>{$v.effective_amount}</td>
+                <td>{$v.water_amount}</td>
+                <td>{$v.bonus}</td>
+                <td>{$v.states}</td>
+                <td>{$v.uploadtime|date="Y/m/d H:i:s",###}</td>
+
+
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+    {$page}
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">//设置默认,页面加载时恢复默认选项。
+    function region_default() {
+        $("option[value='-1']").attr('selected', 'selected');
+    }
+    function setregion(num, address_id) {
+        var next = num + 1;
+        $.ajax({
+            type: 'POST',
+            //设置json格式,接收返回数组。
+            dataType: 'json',
+            url: '',
+            //ajax传递当前选项的value值,也就是当前的region_id。
+            data: 'region_id=' + $('#region_' + num + '_' + address_id).val(),
+            success: function (msg) {
+                //如果返回值不为空则执行。
+                if (msg != null) {
+                    var option_str = '';
+                    //循环书写下一个select中要添加的内容。并添加name标记。
+                    for (var i = 0; i < msg.length; i++) {
+                        option_str += '<option name="region_' + next + '"value="' + msg[i].id + '">' + msg[i].title + '</option>';
+                    }
+                    //删除下一个select中标记name为next的内容。
+                    $("option[name='region_" + next + "']").remove();
+                    //向下一个select中添加书写好的内容。
+                    $('#region_' + next + '_' + address_id).append(option_str);
+                } else {
+                    //如果返回值为空,则移除所有带标记的option,恢复默认选项。
+                    for (var i = next; i <= 4; i++) {
+                        $("option[name='region_" + i + "']").remove();
+                    }
+                }
+            }
+        })
+    }
+</script>
+<include file="Public/footer" />

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>786优惠大厅</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no" name="viewport">
+	<!--允许全屏-->
+	<meta name="apple-touch-fullscreen" content="yes">
+	<!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="full-screen" content="yes">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-orientation" content="portrait">
+	<!-- 设置苹果工具栏颜色 --> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--取消识别电话号码-->
+	<meta name="format-detection" content="telephone=no" />
+	<!--取消识别电子邮件-->
+	<meta name="format-detection" content="email=no" />
+	<!-- 启用360浏览器的极速模式(webkit) -->
+	<meta name="renderer" content="webkit">
+	<!-- 避免IE使用兼容模式 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+	<meta name="HandheldFriendly" content="true">
+	<!-- 微软的老式浏览器 -->
+	<meta name="MobileOptimized" content="320">
+	<!-- uc强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+	<!-- QQ强制竖屏 -->
+	<meta name="x5-orientation" content="portrait">
+	<!-- UC强制全屏 -->
+	<meta name="full-screen" content="yes">
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+	<!-- UC应用模式 -->
+	<meta name="browsermode" content="application">
+	<!-- QQ应用模式 -->
+	<meta name="x5-page-mode" content="app">
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Mb/css/swiper.min.css"/>
+	<link href="__PUBLIC__/Home/Mb/css/select-mania.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/Home/Mb/css/select-mania-theme-green.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/style.css">
+</head>
+<body>
+	<div class="webLimit" id="scroll">
+		<div class="header" style="display:none;">
+			<a class="homeLogo" href="javascript:;"><img src="__PUBLIC__/Home/Mb/img/logo.png"/></a>
+			<a class="searchBtn" href="javascript:;"><img src="__PUBLIC__/Home/Mb/img/search_btn.png"/></a>
+		</div>
+		<div class="AD" style="display:none;">
+			<div class="winnerList">
+				<div class="winnerListBox">
+					<ul>
+					<foreach name="apps_post" item="v">
+						<li><span>恭喜：</span><i>{$v.username|substr=0,3}***</i><em>成功办理</em>{$v.name}</li>
+					</foreach>	
+					</ul>
+				</div>
+			</div>
+			<div class="suona">
+				<i></i>
+				<marquee direction="left" scrollamount="100" scrolldelay="1000" loop="1" width="100%">欢迎莅临【786棋牌】，我们承诺为每一位客户提供最佳、最安全、最公平的博弈游戏，以及全方位的服务。</marquee>
+			</div>
+			<div class="banner">
+				<div class="swiper-container">
+			        <div class="swiper-wrapper">
+			          <div class="swiper-slide"><img src="__PUBLIC__/Home/Mb/img/banner1.png" /></div>
+			          <div class="swiper-slide"><img src="__PUBLIC__/Home/Mb/img/banner2.png" /></div>
+			          <div class="swiper-slide"><img src="__PUBLIC__/Home/Mb/img/banner3.png" /></div>
+			          <div class="swiper-slide"><img src="__PUBLIC__/Home/Mb/img/banner4.png" /></div>
+			          <div class="swiper-slide"><img src="__PUBLIC__/Home/Mb/img/banner5.png" /></div>
+			        </div>
+				</div>
+			</div>
+		</div>
+		<div class="option_popup_box clearfix" style="display:none;">
+			<div class="OP-left-box">
+				<ul>	
+					<li class="active zonghe" title="综合优惠"></li>
+					<li class="qipai" title="棋牌优惠"></li>
+					<li class="buyu" title="捕鱼优惠"></li>
+					<li class="dianzi" title="电子优惠"></li>
+					<li class="shixun" title="视讯优惠"></li>
+					<li class="tiyu" title="体育优惠"></li>
+				</ul>
+			</div>
+			<div class="OP-right-box">
+				<!-- 综合优惠 -->
+				<div class="OP-central-box">
+					<ul>
+					 <foreach name="apps" item="vo">
+					 <if condition="$vo.type eq 1">
+						<li>
+							<img src="{$vo.icon_url}"/>
+							<div class="discountText">
+								<!--<p>初次相遇 豪礼相赠</p>-->
+								<div class="operation">
+									<a href="javascript:;" class="applyBtn" onclick="applyBtn()" title="立即申请"></a>
+									
+								<!-- 	<a href="javascript:;" class="rule" id="{$vo['id']}" title="规则" onclick="applyBtn2({$vo['id']})"></a>   -->
+									
+									<a href="{:U('game/gametext',array('id'=>$vo['id']))}" class="rule" id="{$vo['id']}" title="规则" ></a>
+								</div>
+							</div>
+						</li>
+					 </if>
+					 </foreach>
+					</ul>
+				</div>
+				
+				
+				<!-- 棋牌优惠 -->
+				<div class="OP-central-box">
+					<ul>
+					
+					 <foreach name="apps" item="vo">
+					 <if condition="$vo.type eq 2">
+						<li>
+							<img src="{$vo.icon_url}"/>
+							<div class="discountText">
+								<div class="operation">
+									<a href="javascript:;" class="applyBtn" onclick="applyBtn()" onclick="applyBtn()" title="立即申请"></a>
+									<a href="javascript:;" class="rule" id="{$vo['id']}" title="规则"></a>
+								</div>
+							</div>
+						</li>
+					</if>
+					</foreach>
+					</ul>
+				</div>
+				
+				
+				<!-- 捕鱼优惠 -->
+				<div class="OP-central-box">
+					<ul>
+					<foreach name="apps" item="vo">
+					<if condition="$vo.type eq 3">
+						<li>
+							<img src="{$vo.icon_url}"/>
+							<div class="discountText">
+								<div class="operation">
+									<a href="javascript:;" class="applyBtn" onclick="applyBtn()" title="立即申请"></a>
+									<a href="javascript:;" class="rule" id="{$vo['id']}" title="规则"></a>
+								</div>
+							</div>
+						</li>
+					</if>
+					</foreach>
+					</ul>
+				</div>
+				
+				<!-- 电子优惠 -->
+				<div class="OP-central-box">
+					<ul>
+					<foreach name="apps" item="vo">
+					<if condition="$vo.type eq 4">
+						<li>
+							<img src="{$vo.icon_url}"/>
+							<div class="discountText">
+								<div class="operation">
+									<a href="javascript:;" class="applyBtn" onclick="applyBtn()" title="立即申请"></a>
+									<a href="javascript:;" class="rule" id="{$vo['id']}" title="规则"></a>
+								</div>
+							</div>
+						</li>
+					</if>
+					</foreach>
+					</ul>
+				</div>
+				
+				<!-- 视讯优惠 -->
+				<div class="OP-central-box">
+					<ul>
+					<foreach name="apps" item="vo">
+					<if condition="$vo.type eq 5">
+						<li>
+							<img src="{$vo.icon_url}"/>
+							<div class="discountText">
+								<div class="operation">
+									<a href="javascript:;" class="applyBtn" onclick="applyBtn()" title="立即申请"></a>
+									<a href="javascript:;" class="rule" id="{$vo['id']}" title="规则"></a>
+								</div>
+							</div>
+						</li>
+					</if>	
+					</foreach>	
+					</ul>
+				</div>
+				
+				<!-- 体育优惠 -->
+				<div class="OP-central-box">
+					<ul>
+					<foreach name="apps" item="vo">
+					<if condition="$vo.type eq 6">
+						<li>
+							<img src="{$vo.icon_url}"/>
+							<div class="discountText">
+								<div class="operation">
+									<a href="javascript:;" class="applyBtn" onclick="applyBtn($vo['id'])" title="立即申请"></a>
+									<a href="javascript:;" class="rule" id="{$vo['id']}" title="规则"></a>
+								</div>
+							</div>
+						</li>
+					</if>	
+					</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<ul>
+				<li><a href="http://{$urlname}"><img src="__PUBLIC__/Home/Mb/img/home.png"/></a></li>
+				<li><a href="https://www.xf786.cc"><img src="__PUBLIC__/Home/Mb/img/newDown.png"/></a></li>
+				<li><a href="https://chat.mqimg.com/dist/standalone.html?eid=169003"><img src="__PUBLIC__/Home/Mb/img/kfLink.png"/></a></li>
+			</ul>
+		</div>
+		
+	<div id="rulePage" style="display:block;">
+		<div class="Rheader">
+			<div class="Rtitle">活动规则</div>
+			<!-- <a href="http://{$urlname}" class="goHome"></a> -->
+		</div>
+		<div class="Rcenter">
+		
+		<h1><span>{$info.name}</span></h1>
+		
+			 <if condition="$info.status eq 1">
+			 {$info.explainmb|htmlspecialchars_decode}
+			 <else/>暂时无活动</if>
+		
+			
+		
+			<!-- <h1><span>{$info.name}</span></h1>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即日起，凡是下载【178棋牌】手机APP并成功注册成为我司会员，即可获得免费赠送的178元的迎新好礼，只需达到对应的条件即可领取对应的彩金，盈利到指定的金额或打码量即可提款。给力优惠就应该分享给您的好朋友，敬请互相告知！ </p>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>活动对象</th>
+					<th>领取条件</th>
+					<th>彩金金额</th>
+					<th>提款要求</th>
+					<th>游戏项目</th>
+				</tr>
+				<tr>
+					<td rowspan="3">新注册会员</td>
+					<td>注册新会员 <br />(默认VIP1)</td>
+					<td>8</td>
+					<td rowspan="2">满100元</td>
+					<td rowspan="3">棋牌游戏<br />电子游戏<br />捕鱼游戏</td>
+				</tr>
+				<tr>
+					<td>连续登陆3天 <br />连续登陆7天</td>
+					<td>18<br />28</td>
+				</tr>
+				<tr>
+					<td>晋升至VIP2 <br />晋升至VIP3</td>
+					<td>36<br />88</td>
+					<td>一倍打码</td>
+				</tr>
+			</table>
+			<span>注：申请注册彩金需发送短信到159-0986-4391，短信内容为：会员账号、姓名、当前所在城市（如：北京），发送成功后，联系QQ专员进行核实领取彩金！</span>
+			<h3>活动规则</h3>
+			<p>1.申请注册彩金请添加活动专员QQ，在线客服与微信客服均不受理此活动。</p>
+			<p>2.连续登陆三天即可领取18元彩金，在此之前或期间必须有成功充值任意金额的记录。</p>
+			<p>3.彩金不可累积申请后下注，必须在每次申请后进行娱乐投注或提现。申请彩金时账户额度不能大于1元！</p>
+			<p>3.彩金不可累积申请后下注，必须在每次申请后进行娱乐投注或提现。申请彩金时账户额度不能大于1元！</p>
+			<p>4.178棋牌的所有优惠特为玩家而设，如发现任何团体或个人，以不诚实方式套取红利或任何威胁、滥用公司优惠等行为，公司保留让会员提供有效证件及取消该团体或个人优惠及账户结余的权利；</p>
+			<p>5.178棋牌保留所有权利在任何时候都可以更改、停止、取消该优惠活动。</p>
+			<p>6.参与该优惠表示您同意上述活动要求及规则！</p> -->
+			<!-- <a href="javascript:;" class="Rbtn"></a> -->
+		</div>
+	</div>
+	</div>
+	<div id="popup" class="popup">
+		<div class="popupTitle"></div>
+		<a href="javascript:;" class="popupClose"></a>
+		<div class="adName">初次相遇 豪礼相赠</div>
+		<input type="text" name="username" id="username" placeholder="请填写会员ID" />
+		<select class="selectList">
+		  <!--<option value="0" disabled selected hidden>请选择</option>-->
+		  
+		  <option value="">请选择查询项目</option>
+		   <foreach name="apps" item="v">			
+			<option value="{$v.id}">{$v.name}</option>
+			</foreach>
+			
+		</select>
+		<!-- <input type="text" name="username" id="username" placeholder="请填写会员账号" /> -->
+
+		<div class="idCode">			
+			<!-- <input type="text" name="idCode" id="idCode" placeholder="请填写验证码" />
+			<img src=""/> -->
+		</div>
+		<a href="javascript:;" class="popupBtn" onclick="submit_query()"><img src="__PUBLIC__/Home/Mb/img/CAIPS_btn.png"/></a>
+	</div>
+	<div id="applyPopup" class="popup">
+	
+	
+		<div class="popupTitle"></div>
+		<a href="javascript:;" class="popupClose"></a>
+		<div class="adName">初次相遇 豪礼相赠</div>
+		
+		
+		<form id="myForm" onsubmit="return false" action="##" method="post">
+		
+		<input  type="hidden"  name="cate_id" id="cate_id" value="{$info.id}">
+        <input type="hidden" name="name" value="{$info.name}">
+		<input type="text" name="username1" id="username1" placeholder="请填写会员ID" />
+		
+<!-- 		<if condition="$info.set_bonus eq 1">
+			<label>存款优惠：</label>
+			<select id="set_bonus" name="set_bonus" class="ipt_wraper"><option value="10%">10%</option><option value="20%">20%</option><option value="35%">35%</option></select>
+		</if>
+		
+		<foreach name="fields" item="vo">
+
+           <label>{$vo.title}：</label>
+		   <input type="text" id="{$vo.name}" name="{$vo.name}" placeholder="请输入{$vo.title}">
+		   
+        </foreach> -->
+		
+		
+		<div class="idCode">			
+			<input type="text" name="verify" id="verify"  placeholder="请填写验证码" />
+			<img src="index.php/game/verify.html" id="verify_img" class="verify" />
+		</div>
+				
+		<a href="javascript:;" class="popupBtn" onclick="submit_apply()">
+		<img src="__PUBLIC__/Home/Mb/img/CXpopupBtn.png"/>
+		</a>
+		
+		</form>
+		
+	</div>
+	
+
+	<script src="https://libs.baidu.com/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/swiper.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/rem.suit.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/iosScroll.js"></script>  
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/layer/layer.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/select-mania.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/Mb/js/script.js"></script>
+	
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>786优惠活动大厅</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no" name="viewport" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4c516a" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/animate.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/jquery.bxslider.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/jquery-confirm.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/styles.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/font/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/layout.css">
+</head>
+
+<body>
+<div id="mask">
+    <div class="background" onclick="showMenu()"></div>
+</div>
+<div id="logo">
+    <div class="w640">
+        <a href="" class="logo"></a>
+    </div>
+</div>
+<div id="top">
+    <div class="w640">
+        <div class="title">
+            <h3>申请项目</h3>
+        </div>
+        <div class="icon_link left">
+            <a href="javascript:history.go(-1)">
+                <i class="iconfont icon-back"></i>
+            </a>
+        </div>
+        <div class="icon_link right">
+            <a href="{:U('index/index')}">
+                <i class="iconfont icon-home"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="app">
+    <form id="myForm" onsubmit="return false" action="##" method="post">
+        {__TOKEN__}
+        <input  type="hidden"  name="cate_id" id="cate_id" value="{$info.id}">
+        <input type="hidden" name="name" value="{$info.name}">
+    <div class="form">
+        <h2 class="title">{$info.name}</h2>
+        <div class="h20"></div>
+        <dl><dt><label>会员账号：</label></dt>
+            <dd><input type="text" id="username" name="username" placeholder="请输入会员账号"></dd>
+        </dl>
+
+		<if condition="$info.set_bonus eq 1">
+			<dl><dt><label>存款优惠：</label></dt><dd><select id="set_bonus" name="set_bonus" class="ipt_wraper"><option value="10%">10%</option><option value="20%">20%</option><option value="35%">35%</option></select></dd></dl>
+		</if>
+			
+			
+        <foreach name="fields" item="vo">
+
+            <dl><dt><label>{$vo.title}：</label></dt>
+                <dd><input type="text" id="{$vo.name}" name="{$vo.name}" placeholder="请输入{$vo.title}"></dd>
+            </dl>
+        </foreach>
+        <dl><dt><label>验证码：</label></dt>
+            <dd><input type="text" id="verify" name="verify"  maxlength="4" placeholder="请输入验证码"><span class="vfcode"><img src="{:U('verify')}" id="verify_img" class="verify" alt="点击刷新" maxlength="4"></span></dd>
+                <!--<input type="text" id="verify" name="verify" maxlength="4" placeholder="验证码"></span><span class="qrcode"><img src="{:U('verify')}" id="verify_img" class="verify" alt="点击刷新" maxlength="4"></span></li>-->
+
+        </dl>
+        <div class="buttons">
+            <button class="submit_button" onclick="submit_apply()">提交申请</button>
+        </div>
+    </div>
+    </form>
+    <div class="copyright">
+        Copyright © New Macau Reserved
+    </div>
+</div>
+<!-- js -->
+<script src="__PUBLIC__/Home/Mb/js/jquery.min.js"></script>
+<script src="__PUBLIC__/Home/Mb/js/wordslider.js"></script>
+<script src="__PUBLIC__/Home/Mb/js/jquery.bxslider.js"></script>
+<script src="__PUBLIC__/Home/Mb/js/animate.js"></script>
+<script src="__PUBLIC__/Home/Mb/js/jquery-confirm.min.js"></script>
+<script src="__PUBLIC__/Home/Mb/js/laydate.js"></script>
+<script src="__PUBLIC__/Home/Mb/js/custom.js"></script>
+</body>
+<script>
+
+	//执行一个laydate实例
+	laydate.render({
+	  elem: '#application_date' //指定元素
+	});
+	
+    function chgVerify(){
+        var src = "{:U('verify')}";
+        var random = Math.floor(Math.random() * (1000 + 1));
+        $("#verify_img").attr("src", src + (src.indexOf('?') == -1 ? '?' : '&') + "random=" + random);
+
+    }
+    $(function () {
+        $(".verify").click(function () {
+            chgVerify();
+        });
+    });
+
+</script>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>欢迎莅临-优惠申请大厅</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/animate.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/jquery.bxslider.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/jquery-confirm.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/styles.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/font/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/layout.css">
+	<link rel="stylesheet" href="__PUBLIC__/Home/Pc/css/DownApp.css">
+</head>
+
+<body>
+<div id="top">
+    <div class="w1100">
+        <a href="#" class="logo"></a>
+        <div class="semi_logo"></div>
+        <button onclick="open_query('{:U('query/index')}')" class="query"></button>
+    </div>
+</div>
+
+<div id="board" class="w1100">
+    <div class="slider">
+        <ul>
+            <li><img src="__PUBLIC__/Home/Pc/images/slider2.jpg" alt=""></li>
+            <li><img src="__PUBLIC__/Home/Pc/images/slider3.jpg" alt=""></li>
+            <li><img src="__PUBLIC__/Home/Pc/images/slider4.jpg" alt=""></li>
+			<li><img src="__PUBLIC__/Home/Pc/images/slider5.jpg" alt=""></li>
+			<li><img src="__PUBLIC__/Home/Pc/images/slider6.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="winner_list">
+        <div class="wrap">
+            <ul class="list">
+                <foreach name="apps_post" item="v">
+                    <li>
+                        <b>恭喜：</b>
+                        <span class="name">{$v.username|substr=0,3}***</span>
+                        <b>成功办理了</b>
+                        <span class="prize">{$v.name}</span>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="main">
+    <div class="w1100">
+        <div class="top"></div>
+        <div class="body">
+            <div class="game_list">
+
+                <foreach name="apps" item="vo">
+                    <input type="hidden" name="m" value="Home" />
+                    <div class="single">
+                        <dl>
+                            <dt>
+                                <img src="{$vo.icon_url}" alt="">
+                            <p><a href="javascript:show_game('{:U('game/Gametext',array('id'=>$vo['id']))}','{$vo['name']}','{$vo['id']}')">{$vo.short_name}</a></p>
+                            </dt>
+                            <dd>
+                                <a href="javascript:show_game('{:U('game/Gametext',array('id'=>$vo['id']))}','{$vo['name']}','{$vo['id']}')" class="rule">优惠规则</a>
+                                <a href="javascript:apply_game('{:U('game/game',array('id'=>$vo['id']))}','{$vo['name']}','{$vo['id']}')" class="apply">点击申请</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </foreach>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+
+<div id="viewDiv" hidden>
+    <ifream src="/index.php/game/game.html"></ifream>
+</div>
+
+
+<div id="bottom">
+    <div class="w1100">
+        <p class="logos"><img src="__PUBLIC__/Home/Pc/images/logos.png"></p>
+        <p class="copyright">Copyright © New Macau Reserved</p>
+    </div>
+</div>
+<div id="left_ad">
+    <ul>
+        <li class="gj"><a href="https://www.xamjgj.com/" target="_blank">金管家</a></li>
+        <li class="hb"><a href="https://www.xamhb.com/" target="_blank">天天抢红包</a></li>
+        <li class="fs"><a href="https://www.xamfs.com/" target="_blank">实时返水</a></li>
+        <li class="kc"><a href="https://www.90005.com/" target="_blank">快速充值</a></li>
+        <!-- <li class="wm"><span class="logo"></span><a href="https://www.ggg8.com/" target="_blank">五码合一</a></li> -->
+    </ul>
+</div>
+<div id="right_ad">
+    <ul>
+        <li>
+            <a href="https://www.xam09.wang/register.html" target="_blank">
+                <span><i class="iconfont icon-account"></i></span>
+                <h3>注册会员</h3>
+                <p>member register</p>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.65558888.com/line.htm" target="_blank">
+                <span><i class="iconfont icon-xianlu"></i></span>
+                <h3>线路检测</h3>
+                <p>line detection</p>
+            </a>
+        </li>
+        <li>
+            <a href="https://future.mdihi.com/chat/chatClient/chatbox.jsp?companyID=365026895&configID=262&jid=1559703518&s=1" target="_blank">
+                <span><i class="iconfont icon-custom"></i></span>
+                <h3>在线客服</h3>
+                <p>customer service</p>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" onclick="_boxIsShow()">
+                <span><i class="iconfont icon-shouji1"></i></span>
+                <h3>手机下注</h3>
+                <p>cellphone online bet</p>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.xam09.wang/" target="_blank">
+                <span><i class="iconfont icon-diannao"></i></span>
+                <h3>客户端下载</h3>
+                <p>client download</p>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.ub666.com/" target="_blank">
+                <span><i class="iconfont icon-explorer"></i></span>
+                <h3>寰宇浏览器</h3>
+                <p>universe browser</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- js -->
+<script src="__PUBLIC__/Home/Pc/js/jquery.min.js"></script>
+<script src="__PUBLIC__/Home/Pc/js/wordslider.js"></script>
+<script src="__PUBLIC__/Home/Pc/js/jquery.bxslider.js"></script>
+<script src="__PUBLIC__/Home/Pc/js/animate.js"></script>
+<script src="__PUBLIC__/Home/Pc/js/jquery-confirm.min.js"></script>
+<script src="__PUBLIC__/Home/Pc/js/laydate.js"></script>
+<script src="__PUBLIC__/Home/Pc/js/custom.js"></script>
+<div class="DownApp-home-layer-box" id="DownApp-home-layer-box" style="display: none;">
+    <div class="DownApp-layer-zhez"></div>
+    <div class="DownApp-layer-box">
+        <div class="D-layer-title">
+            <h2>新澳门APP扫码下载</h2>
+            <i onclick="_boxIsShow()"></i>
+        </div>
+        <div class="D-layer-container">
+            <p>Android(安卓)版直接扫码下载安装即可。<br />iPhone(苹果)版本下载请点击下面的按钮按照步骤进行设置。<br />推荐会员下载手机APP，防劫持、防跳转！娱乐无忧，随时随地畅享游戏乐趣。全面支持：存取款、游戏下注、优惠申请、在线客服...</p>
+            <div class="D-layer-QR-code">
+                <ul class="clearfix">
+                    <li>
+                        <img src="/Public/Home/Pc/images/Down-QR-code.png"/>
+                        <span><i class="QR-code-iphone"></i>iPhone版扫码下载</span>
+                    </li>
+                    <li>
+                        <img src="/Public/Home/Pc/images/Down-QR-code.png"/>
+                        <span><i class="QR-code-android"></i>Android版扫码下载</span>
+                    </li>
+                </ul>
+            </div>
+            <a href="http://www.90006.com/D_load_App.html" target="_blank" class="iphone-learn-down">iPhone版下载教程</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	var _downAppBox = document.getElementById('DownApp-home-layer-box');
+	function _boxIsShow(){
+        if($(window).width()<640){
+           location.href="./app.php"
+        }else{
+       _downAppBox.style.display = _downAppBox.style.display == "none" ? "block" : "none" ;
+         }
+   }
+</script>
+</body>
+</html>

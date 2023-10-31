@@ -1,0 +1,113 @@
+<include file="Public/header" title="后台主页" />
+<div id="page-wrapper">
+
+    <div class="col-lg-3">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <i class="fa fa-users fa-3x"></i>
+                    </div>
+                    <div class="col-xs-5 text-right">
+                        <p class="announcement-heading">{$Postsum}</p>
+                        <p class="announcement-text">申请信息总数</p>
+                    </div>
+                    <ul class="nav nav-pills" style="padding-left: 10px;">
+                        <li><a href="{:U('post/index',array('status'=>0))}" class="label label-primary">未审核:{$Postetx}</a></li>
+                        <li><a href="{:U('post/index',array('status'=>1))}" class="label label-success">审核通过:{$Postpass}</a></li>
+                        <li><a href="{:U('post/index',array('status'=>2))}" class="label label-warning">审核不通过:{$Postnopass}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="{:U('post/index')}">
+                <div class="panel-footer announcement-bottom">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            查看申请会员
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <i class="fa fa-pencil-square-o fa-3x"></i>
+                        </div>
+                        <div class="col-xs-5 text-right">
+                            <p class="announcement-heading" >{$Categorysum}</p>
+                            <p class="announcement-text">优惠项目</p>
+                        </div>
+                        <ul class="nav nav-pills">
+                            <li><a href="#">&nbsp</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{:U('Category/index')}">
+                    <div class="panel-footer announcement-bottom">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                查看优惠项目
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="col-lg-3">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <i class="fa fa-user fa-3x"></i>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <p class="announcement-heading" >{$Membersum}</p>
+                            <p class="announcement-text">管理员账户</p>
+                        </div>
+                        <ul class="nav nav-pills">
+                            <li><a href="#">&nbsp</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{:U('Member/index')}">
+                    <div class="panel-footer announcement-bottom">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                管理账户
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <!-- /.row -->
+
+    <!-- /.row -->
+
+</div>
+
+<include file="Public/footer" />

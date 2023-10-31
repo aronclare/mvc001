@@ -1,0 +1,132 @@
+<!--工具栏-->
+<form id="frmMember" action="Member_User.aspx" method="get"> 
+    <div class="alert alert-info search" style="height:auto;overflow:hidden;">
+        <div class="control"><button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增会员</button>&nbsp;<button type="button" id="btnClear" name="btnClear" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span>&nbsp;清理会员</button></div>
+        <div class="text">代理商：</div>
+        <div class="control">
+            <select name="Agent" size="1" id="Agent" class="form-control w100"> 
+                <option value="">全部</option>
+
+                <option value="duanxin" >duanxin</option>
+
+                <option value="sf1898" >sf1898</option>
+
+                <option value="wang" >wang</option>
+
+                <option value="wang1" >wang1</option>
+
+                <option value="wangyi" >wangyi</option>
+
+                <option value="youhua" >youhua</option>
+
+                <option value="zongdai" >zongdai</option>
+
+            </select>
+        </div>
+        <div class="text">排序：</div>
+        <div class="control">
+            <select name="Order" id="Select1" class="form-control"> 
+                <option value="UserName" >账　　号</option> 
+                <option value="Cash" >保 证 金</option>
+                <option value="RegDate"  selected>新增日期</option> 
+                <option value="Last_Login" >最后登录</option> 
+                <option value="Last_Action" >最后活动</option> 
+            </select>
+        </div>
+        <div class="control">
+            <select name="By" id="By" class="form-control"> 
+                <option value="asc" >升序</option> 
+                <option value="desc"  selected>降序</option> 
+            </select>
+        </div>
+        <div class="text">类型：</div>
+        <div class="control">
+            <select name="Demo" size="1" id="Demo" class="form-control"> 
+                <option value="2" >全部</option>
+                <option value="0"  selected>正式</option>
+                <option value="1" >试玩</option>
+            </select>
+        </div>
+        <div class="text">下线权限：</div>
+        <div class="control">
+            <select name="Referrals" size="1" id="Referrals" class="form-control">
+                <option value="2"  selected>全部</option>
+                <option value="1" >开通</option>
+                <option value="0" >关闭</option>
+            </select>
+        </div>
+        <div class="text">搜索：</div>
+        <div class="control">
+            <input name="UserName" type="text" id="UserName" value="" class="form-control w125" />
+        </div>
+        <div class="control"><button type="submit" name="btnSearch" id="btnSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;查询</button></div>
+        <div class="control text">共有会员：823 人</div>
+        <div class="text" id="ajxLoad" style="display:none;"><img src="./images/loading.gif" border="0" alt="" /></div>
+    </div>
+</form>
+<!--工具栏-->
+<form id="frmMember" action="Member_User.aspx" method="get"> 
+    <div class="alert alert-info search" style="height:auto;overflow:hidden;">
+        <div class="control"><button type="button" id="btnAdd" name="btnAdd" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增会员</button>&nbsp;<button type="button" id="btnClear" name="btnClear" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span>&nbsp;清理会员</button></div>
+        <div class="text">代理商：</div>
+        <div class="control">
+            <select name="Agent" size="1" id="Agent" class="form-control w100"> 
+                <option value="">全部</option>
+
+                <option value="duanxin" >duanxin</option>
+
+                <option value="sf1898" >sf1898</option>
+
+                <option value="wang" >wang</option>
+
+                <option value="wang1" >wang1</option>
+
+                <option value="wangyi" >wangyi</option>
+
+                <option value="youhua" >youhua</option>
+
+                <option value="zongdai" >zongdai</option>
+
+            </select>
+        </div>
+        <div class="text">排序：</div>
+        <div class="control">
+            <select name="Order" id="Select1" class="form-control"> 
+                <option value="UserName" >账　　号</option> 
+                <option value="Cash" >保 证 金</option>
+                <option value="RegDate"  selected>新增日期</option> 
+                <option value="Last_Login" >最后登录</option> 
+                <option value="Last_Action" >最后活动</option> 
+            </select>
+        </div>
+        <div class="control">
+            <select name="By" id="By" class="form-control"> 
+                <option value="asc" >升序</option> 
+                <option value="desc"  selected>降序</option> 
+            </select>
+        </div>
+        <div class="text">类型：</div>
+        <div class="control">
+            <select name="Demo" size="1" id="Demo" class="form-control"> 
+                <option value="2" >全部</option>
+                <option value="0"  selected>正式</option>
+                <option value="1" >试玩</option>
+            </select>
+        </div>
+        <div class="text">下线权限：</div>
+        <div class="control">
+            <select name="Referrals" size="1" id="Referrals" class="form-control">
+                <option value="2"  selected>全部</option>
+                <option value="1" >开通</option>
+                <option value="0" >关闭</option>
+            </select>
+        </div>
+        <div class="text">搜索：</div>
+        <div class="control">
+            <input name="UserName" type="text" id="UserName" value="" class="form-control w125" />
+        </div>
+        <div class="control"><button type="submit" name="btnSearch" id="btnSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;查询</button></div>
+        <div class="control text">共有会员：823 人</div>
+        <div class="text" id="ajxLoad" style="display:none;"><img src="./images/loading.gif" border="0" alt="" /></div>
+    </div>
+</form>

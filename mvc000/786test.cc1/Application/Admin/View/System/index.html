@@ -1,0 +1,18 @@
+<include file="Public/header" title="添加用户" />
+<div id="page-wrapper">
+    <form action="{:U('system/index')}" method="post">
+        <div class="form-group">
+            <label>用户列表刷新时间：</label>
+            <input class="form-control" type="text" name="refresh" value="{$systems.refresh}">
+        </div>
+        <div class="form-group">
+            <label>拉黑提示语：</label>
+            <input class="form-control" type="text" name="black_text" value="{$systems.black_text}">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success"type="submit" >更新</button>
+        </div>
+    </form>
+</div>
+
+<include file="Public/footer" />

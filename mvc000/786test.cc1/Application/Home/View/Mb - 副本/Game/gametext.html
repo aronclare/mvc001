@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XAM优惠活动大厅</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no" name="viewport" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#4c516a" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/animate.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/jquery.bxslider.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/jquery-confirm.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/styles.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/font/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/Mb/css/layout.css">
+</head>
+
+<body>
+<div id="mask">
+    <div class="background" onclick="showMenu()"></div>
+</div>
+<div id="logo">
+    <div class="w640">
+        <a href="" class="logo"></a>
+    </div>
+</div>
+<div id="top">
+    <div class="w640">
+        <div class="title">
+            <h3>优惠规则</h3>
+        </div>
+        <div class="icon_link left">
+            <a href="javascript:history.go(-1)">
+                <i class="iconfont icon-back"></i>
+            </a>
+        </div>
+        <div class="icon_link right">
+            <a href="./index.htm">
+                <i class="iconfont icon-home"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="app">
+    <div class="article">
+        <h2 class="title">{$info.name}</h2>
+        <div class="h20"></div>
+        <div class="promotContent">
+            <if condition="$info.status eq 1">{$info.explainmb|htmlspecialchars_decode}<else/>暂时无活动</if>
+            <div class="buttons">
+                <a href="{:U('game/game',array('id'=>$info['id']))}"><button class="submit_button">立即申请</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        Copyright © New Macau Reserved
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<include file="Public/header" title="添加项目" />
+<div id="page-wrapper">
+
+
+        <form method="post" action="{:U('category/add')}" id="update_form" enctype="multipart/form-data">
+
+
+        <div class="form-group">
+            <label for="aa">项目名称</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="输入项目名称">
+        </div>
+
+        <div class="form-group">
+            <label for="dd">副名称</label>
+            <input type="text" name="short_name" class="form-control" id="short_name" placeholder="输入副名称,不能和其他副名称重复">
+        </div>
+		
+		<div class="form-group">
+            <label for="dd">项目类型</label>
+            <select name="type" id="type">
+					<option value="0" >请选择项目类型</option>
+                    <option value="1" <if condition="$model.type eq 1">selected</if>>综合优惠</option>
+                    <option value="2" <if condition="$model.type eq 2">selected</if>>棋牌优惠</option>
+                    <option value="3" <if condition="$model.type eq 3">selected</if>>捕鱼优惠</option>
+                    <option value="4" <if condition="$model.type eq 4">selected</if>>电子优惠</option>
+                    <option value="5" <if condition="$model.type eq 5">selected</if>>视讯优惠</option>
+                    <option value="6" <if condition="$model.type eq 6">selected</if>>体育优惠</option>
+                    <option value="7" <if condition="$model.type eq 7">selected</if>>电竞优惠</option>
+            </select>
+        </div>
+		
+		
+        <div class="form-group">
+            <label for="mm">排序</label>
+            <input type="text" name="sort" class="form-control" style="width: 150px;" placeholder="输入排序序号">
+        </div>
+
+        <div class="form-group">
+            <label for="post-content">项目详情</label>
+                <script id="post-content" name="explain" type="text/plain"></script>
+        </div>
+
+
+
+        <div class="control-group">
+            <label>允许上传图片格式：('jpg', 'gif', 'png', 'jpeg')</label>
+            <input type="file" name="img_url" placeholder="" datatype="*2-50" nullmsg="png" errormsg="png" />
+        </div>
+        <hr>
+        <div>
+            <div class="control-group">
+                <label for="application_type">I P：</label>
+                <!--<label ><input type="radio" name="ip_repeatability" value="0" <if condition="$model.ip_repeatability eq 0">checked="checked"</if>>可以重复</label>-->
+                <!--<label><input type="radio" name="ip_repeatability" value="1" <if condition="$model.ip_repeatability eq 1">checked="checked"</if>>不能重复</label>-->
+                该IP可以申请的次数为：<input type="number" name="ip_repeatability_repeat" value="{$model.ip_repeatability_repeat}" style="width:50px; text-align:center;" />
+            </div>
+            <div class="control-group">
+                <label for="application_type">会员ID：</label>
+                <label><input type="radio" name="username_repeatability" value="0" checked="checked">可以重复</label>
+                <label><input type="radio" name="username_repeatability" value="1">不能重复</label>
+            </div>
+            <div class="control-group">
+                <label for="member_name">会员姓名：</label>
+                <label><input type="radio" name="member_name_repeatability" value="0" checked="checked">可以重复</label>
+                <label><input type="radio" name="member_name_repeatability" value="1">不能重复</label>
+            </div>
+            <div class="control-group">
+                <label for="contact_qq">联系QQ  ：</label>
+                <label><input type="radio" name="contact_qq_repeatability" value="0" checked="checked">可以重复</label>
+                <label><input type="radio" name="contact_qq_repeatability" value="1">不能重复</label>
+            </div>
+            <div>
+                <label for="contact_via_mail">联系邮箱：</label>
+                <label><input type="radio" name="contact_via_mail_repeatability" value="0" checked="checked">可以重复</label>
+                <label><input type="radio" name="contact_via_mail_repeatability" value="1">不能重复</label>
+            </div>
+			
+			<div class="control-group">
+                <label for="referees">推荐人ID：</label>
+                <select name="referees" id="referees" size="1">
+                    <option value="1" <if condition="$model.referees eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.referees eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="referees_sort" value="{$model.referees_sort}" style="width:50px; text-align:center;" />
+            </div>
+			 <div class="control-group">
+                <label for="referral">被推荐人手机号：</label>
+                <select name="referral" id="referral" size="1">
+                    <option value="1" <if condition="$model.referral eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.referral eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="referral_sort" value="{$model.referral_sort}" style="width:50px; text-align:center;" />
+            </div>
+			 <div class="control-group">
+                <label for="new_name">被推荐人微信号：</label>
+                <select name="new_name" id="new_name" size="1">
+                    <option value="1" <if condition="$model.new_name eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.new_name eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="new_name_sort" value="{$model.new_name_sort}" style="width:50px; text-align:center;" />
+            </div>
+			 <div class="control-group">
+                <label for="application_type">申请类型（流量话费）：</label>
+                <select name="application_type" id="application_type" size="1">
+                    <option value="1" <if condition="$model.application_type eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.application_type eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="application_type_sort" value="{$model.application_type_sort}" style="width:50px; text-align:center;" />
+            </div>
+			<div class="control-group">
+                <label for="old_username">上级ID：</label>
+                <select name="old_username" id="old_username" size="1">
+                    <option value="1" <if condition="$model.old_username eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.old_username eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="old_username_sort" value="{$model.old_username_sort}" style="width:50px; text-align:center;" />
+            </div>
+			 <div class="control-group">
+                <label for="new_username">下级ID：</label>
+                <select name="new_username" id="new_username" size="1">
+                    <option value="1" <if condition="$model.new_username eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.new_username eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="new_username_sort" value="{$model.new_username_sort}" style="width:50px; text-align:center;" />
+            </div>
+			            <div class="control-group">
+                <label for="note_the_single_amount">注单金额：</label>
+                <select name="note_the_single_amount" id="note_the_single_amount" size="1">
+                    <option value="1" <if condition="$model.note_the_single_amount eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.note_the_single_amount eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="note_the_single_amount_sort" value="{$model.note_the_single_amount_sort}" style="width:50px; text-align:center;" />
+            </div>
+			<div class="control-group">
+                <label for="winner_paid">申请金额：</label>
+                <select name="winner_paid" id="winner_paid" size="1">
+                    <option value="1" <if condition="$model.winner_paid eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.winner_paid eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="winner_paid_sort" value="{$model.winner_paid_sort}" style="width:50px; text-align:center;" />
+            </div>			
+			 <div class="control-group">
+                <label for="can_win_prizes">注单时间：</label>
+                <select name="can_win_prizes" id="can_win_prizes" size="1">
+                    <option value="1" <if condition="$model.can_win_prizes eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.can_win_prizes eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="can_win_prizes_sort" value="{$model.can_win_prizes_sort}" style="width:50px; text-align:center;" />
+            </div>						
+			<div class="control-group">
+                <label for="old_phone">注单号后7位：</label>
+                <select name="old_phone" id="old_phone" size="1">
+                    <option value="1" <if condition="$model.old_phone eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.old_phone eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="old_phone_sort" value="{$model.old_phone_sort}" style="width:50px; text-align:center;" />
+            </div>
+			 <div class="control-group">
+                <label for="old_name">会员ID：</label>
+                <select name="old_name" id="old_name" size="1">
+                    <option value="1" <if condition="$model.old_name eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.old_name eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="old_name_sort" value="{$model.old_name_sort}" style="width:50px; text-align:center;" />
+            </div>
+			<div class="control-group">
+                <label for="losses">亏损金额：</label>
+                <select name="losses" id="losses" size="1">
+                    <option value="1" <if condition="$model.losses eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.losses eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="losses_sort" value="{$model.losses_sort}" style="width:50px; text-align:center;" />
+            </div>
+			 <div class="control-group">
+                <label for="effective_betting">周有效投注：</label>
+                <select name="effective_betting" id="effective_betting" size="1">
+                    <option value="1" <if condition="$model.effective_betting eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.effective_betting eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="effective_betting_sort" value="{$model.effective_betting_sort}" style="width:50px; text-align:center;" />
+            </div>
+			<div class="control-group">
+                <label for="quantity_completion">连赢局数：</label>
+                <select name="quantity_completion" id="quantity_completion" size="1">
+                    <option value="1" <if condition="$model.quantity_completion eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.quantity_completion eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="quantity_completion_sort" value="{$model.quantity_completion_sort_sort}" style="width:50px; text-align:center;" />
+            </div>
+			            <div class="control-group">
+                <label for="apply_for_days">连赢时间：</label>
+                <select name="apply_for_days" id="apply_for_days" size="1">
+                    <option value="1" <if condition="$model.apply_for_days eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.apply_for_days eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="apply_for_days_sort" value="{$model.apply_for_days_sort}" style="width:50px; text-align:center;" />
+            </div>
+			            <div class="control-group">
+                <label for="note_the_single_code">申请牌型：</label>
+                <select name="note_the_single_code" id="note_the_single_code" size="1">
+                    <option value="1" <if condition="$model.note_the_single_code eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.note_the_single_code eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="note_the_single_code_sort" value="{$model.note_the_single_code_sort}" style="width:50px; text-align:center;" />
+            </div>
+			            <div class="control-group">
+                <label for="application_date">连拿时间：</label>
+                <select name="application_date" id="application_date" size="1">
+                    <option value="1" <if condition="$model.application_date eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.application_date eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="application_date_sort" value="{$model.application_date_sort}" style="width:50px; text-align:center;" />
+            </div>
+			            <div class="control-group">
+                <label for="number_participants">日有效投注：</label>
+                <select name="number_participants" id="number_participants" size="1">
+                    <option value="1" <if condition="$model.number_participants eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.number_participants eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="number_participants_sort" value="{$model.number_participants_sort}" style="width:50px; text-align:center;" />
+            </div>
+			
+			
+			
+			
+			
+           
+
+            <div class="control-group">
+                <label for="member_name">会员姓名：</label>
+                <select name="member_name" id="member_name" size="1">
+                    <option value="1" <if condition="$model.member_name eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.member_name eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="member_name_sort" value="{$model.member_name_sort}" style="width:50px; text-align:center;" />
+            </div>
+
+           
+
+            <div class="control-group">
+                <label for="contact_qq">联系QQ  ：</label>
+                <select name="contact_qq" id="contact_qq" size="1">
+                    <option value="1" <if condition="$model.contact_qq eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.contact_qq eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="contact_qq_sort" value="{$model.contact_qq_sort}" style="width:50px; text-align:center;" />
+            </div>
+
+
+            <div class="control-group" style="display:hidden;">
+                <label for="apply_for_customs_number">申请关数：</label>
+                <select name="apply_for_customs_number" id="apply_for_customs_number" size="1">
+                    <option value="1" >显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="apply_for_customs_number_sort" value="{$model.apply_for_customs_number_sort}" style="width:50px; text-align:center;" />
+            </div>
+
+            <div class="control-group" style="display:hidden;">
+                <label for="multiple_water">流水倍数：</label>
+                <select name="multiple_water" id="multiple_water" size="1">
+                    <option value="1">显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="multiple_water_sort" value="{$model.multiple_water_sort}" style="width:50px; text-align:center;" />
+            </div>
+            <div class="control-group" style="display:hidden;">
+                <label for="game_project">游戏项目：</label>
+                <select name="game_project" id="game_project" size="1">
+                    <option value="1" >显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="game_project_sort" value="{$model.game_project_sort}" style="width:50px; text-align:center;" />
+            </div>
+            <div class="control-group" style="display:hidden;">
+                <label for="contact_via_mail">联系邮箱：</label>
+                <select name="contact_via_mail" id="contact_via_mail" size="1">
+                    <option value="1" <if condition="$model.contact_via_mail eq 1">selected</if>>显示</option>
+                    <option value="2" <if condition="$model.contact_via_mail eq 2">selected</if>>隐藏</option>
+                </select>
+                排序：<input type="number" name="contact_via_mail_sort" value="{$model.contact_via_mail_sort}" style="width:50px; text-align:center;" />
+            </div>
+
+
+
+
+
+
+
+
+            <div class="control-group" style="display:hidden;">
+                <label for="profit_quota">盈利额度：</label>
+                <select name="profit_quota" id="profit_quota" size="1">
+                    <option value="1">显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="profit_quota_sort" value="{$model.profit_quota_sort}" style="width:50px; text-align:center;" />
+            </div>
+           
+
+
+
+
+            <div class="control-group" style="display:hidden;">
+                <label for="set_bonus">注册送彩金：</label>
+                <select name="set_bonus" id="set_bonus" size="1">
+                    <option value="1" >显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="set_bonus_sort" value="{$model.set_bonus_sort}" style="width:50px; text-align:center;" />
+            </div>
+        </div>
+           
+
+           
+
+           
+           
+            <div class="control-group" style="display:hidden;">
+                <label for="new_phone">个人微信号：</label>
+                <select name="new_phone" id="new_phone" size="1">
+                    <option value="1" >显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="new_phone_sort" value="{$model.new_phone_sort}" style="width:50px; text-align:center;" />
+            </div>
+            <div class="control-group" style="display:hidden;">
+                <label for="friends">邀请好友：</label>
+                <select name="friends" id="friends" size="1">
+                    <option value="1" >显示</option>
+                    <option value="2" selected>隐藏</option>
+                </select>
+                排序：<input type="number" name="friends_sort" value="{$model.friends_sort}" style="width:50px; text-align:center;" />
+            </div>
+
+
+
+			
+			
+
+
+        <button type="button" name="btnAllHide" id="btnAllHide" class="btn btn-info">一键全部隐藏</button>
+        <button type="button" name="btnAllShow" id="btnAllShow" class="btn btn-success">一键全部显示</button>
+        <button type="submit" class="btn btn-default">添加</button>
+    </form>
+</div>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+
+<include file="Public/footer" />
+<script type="text/javascript">
+    $(function(){
+        $("#btnAllHide").click(function(){
+            $("select").val("2");
+        });
+        $("#btnAllShow").click(function(){
+            $("select").val("1");
+        });
+    });
+    var ue = UE.getEditor('post-content',{
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo','bold', 'italic', 'underline','fontborder', 'strikethrough', '|','simpleupload', 'insertimage','emotion','link','unlink', '|', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote','searchreplace', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc'],
+            ['inserttable','insertrow', 'insertcol','mergeright', 'mergedown','deleterow', 'deletecol','splittorows','splittocols', 'splittocells','deletecaption','inserttitle', 'mergecells', 'deletetable','insertparagraphbeforetable', 'paragraph','fontsize','fontfamily']
+        ],
+        initialFrameHeight:500,
+        zIndex:100
+    });
+    ue.ready(function() {
+        //设置编辑器的内容
+        ue.setContent('');
+        //获取html内容，返回: <p>hello</p>
+        var html = ue.getContent();
+        //获取纯文本内容，返回: hello
+        var txt = ue.getContentTxt();
+    });
+    //    var ue = UE.getEditor('post-picture',{
+    //        toolbars: [
+    //            [ 'simpleupload']
+    //        ],
+    //        initialFrameHeight:500,
+    //        zIndex:100
+    //    });
+</script>

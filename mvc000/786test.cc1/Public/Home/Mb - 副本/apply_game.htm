@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>XAM优惠活动大厅</title>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no" name="viewport" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-orientation" content="portrait" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#4c516a" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="email=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-orientation" content="portrait" />
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="browsermode" content="application" />
+  <meta name="x5-page-mode" content="app" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/animate.css">
+  <link rel="stylesheet" href="./css/jquery.bxslider.css">
+  <link rel="stylesheet" href="./css/jquery-confirm.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/font/iconfont.css">
+  <link rel="stylesheet" href="./css/layout.css">
+</head>
+
+<body>
+  <div id="mask">
+    <div class="background" onclick="showMenu()"></div>
+  </div>
+  <div id="logo">
+    <div class="w640">
+      <a href="" class="logo"></a>
+    </div>
+  </div>
+  <div id="top">
+    <div class="w640">
+      <div class="title">
+        <h3>申请项目</h3>
+      </div>
+      <div class="icon_link left">
+        <a href="javascript:history.go(-1)">
+          <i class="iconfont icon-back"></i>
+        </a>
+      </div>
+      <div class="icon_link right">
+        <a href="./index.htm">
+          <i class="iconfont icon-home"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="app">
+    <div class="form">
+    <h2 class="title">玩转千炮捕鱼</h2>
+    <div class="h20"></div>
+      <dl><dt><label>会员账号：</label></dt>
+        <dd><input type="text" id="username" placeholder="请输入会员账号"></dd>
+      </dl>
+      <dl><dt><label>申请日期：</label></dt>
+        <dd><input type="text" id="datetime" placeholder="请选择申请日期"></dd>
+      </dl>
+      <dl><dt><label>亏损额度：</label></dt>
+        <dd><input type="text" id="kuisun" placeholder="请输入亏损额度"></dd>
+      </dl>
+      <dl><dt><label>盈利额度：</label></dt>
+        <dd><input type="text" id="yingli" placeholder="请输入盈利额度"></dd>
+      </dl>
+      <dl><dt><label>验证码：</label></dt>
+        <dd><input type="text" id="verfy" placeholder="请输入验证码"><span class="vfcode"><img src="./images/qrcode.png"></span></dd>
+      </dl>
+      <div class="buttons">
+        <button class="submit_button" onclick="submit_apply(6)">提交申请</button>
+      </div>
+    </div>
+    <div class="copyright">
+      Copyright © New Macau Reserved
+    </div>
+  </div>
+  <!-- js -->
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/wordslider.js"></script>
+  <script src="./js/jquery.bxslider.js"></script>
+  <script src="./js/animate.js"></script>
+  <script src="./js/jquery-confirm.min.js"></script>
+  <script src="./js/laydate.js"></script>
+  <script src="./js/custom.js"></script>
+</body>
+
+</html>

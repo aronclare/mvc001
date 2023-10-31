@@ -1,0 +1,413 @@
+<include file="Public/header" title="信息管理" />
+
+
+<div class="control-group">
+    <label for="virtual_coin">虚拟币钱包：</label>
+    <select name="virtual_coin" id="virtual_coin" size="1">
+        <option value="1" <if condition="$model.virtual_coin eq 1">selected</if>>显示</option>
+        <option value="2" <if condition="$model.virtual_coin eq 2">selected</if>>隐藏</option>
+    </select>
+    排序：<input type="number" name="virtual_coin_sort" value="{$model.virtual_coin_sort}" style="width:50px; text-align:center;" />
+</div>
+
+
+
+pc
+
+<if condition="$info.virtual_coin eq 1 ">
+    <li>
+        <label>虚拟币钱包：</label>
+        <select id="virtual_coin" name="virtual_coin" class="ipt_wraper">
+            <option value="GOPAY钱包">GOPAY钱包</option>
+            <option value="OKPAY钱包">OKPAY钱包</option>
+            <option value="购宝钱包">购宝钱包</option>
+        </select>
+    </li>
+</if>
+
+
+
+<if condition="$info.virtual_coin eq 1">
+    <dl><dt><label>虚拟币钱包：</label></dt>
+        <dd>   <select id="virtual_coin" name="virtual_coin" class="ipt_wraper">
+            <option value="GOPAY钱包">GOPAY钱包</option>
+            <option value="OKPAY钱包">OKPAY钱包</option>
+            <option value="购宝钱包">购宝钱包</option>
+        </select></dd>
+    </dl>
+</if>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<script src="__PUBLIC__/Admin/Admin/laydate/laydate.js"></script>
+<script src="__PUBLIC__/Admin/Admin/js/jquery-1.8.3.min.js"></script>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="form-inline" style="margin-left: 16px;margin-bottom: 30px;">
+            <form action="{:U('post/index')}" method="get" id="myform">
+                <label>项目</label>
+                <select name="cate_id" id="cate_id" style="width:200px; " class="form-control">
+                    <option value="0">全部项目</option>
+                    <foreach name="categorys" item="v">
+                        <option value="{$v.id}" <if condition="$cate_id eq $v['id']">selected</if>>{$v.name}</option>
+                    </foreach>
+                </select>
+                <label>审核状态</label>
+                <select name="status" id="status" style="width:130px;" class="form-control">
+                    <option value="">全部</option>
+                    <option value="0" <if condition="$status eq '0'">selected</if>>未审核</option>
+                    <option value="1" <if condition="$status eq '1'">selected</if>>审核通过</option>
+                    <option value="2" <if condition="$status eq '2'">selected</if>>审核不通过</option>
+                </select>
+
+                <label>申请时间：</label>
+                <input type="text" class="form-control"  placeholder="起始日期" id="starttime" name="starttime" value="{$starttime}" style="width:150px">
+                <input type="text" class="form-control"  placeholder="结束日期" id="endtime" name="endtime" value="{$endtime}" style="width:150px">
+
+                <label>关键字：</label>
+                <select name="andor" style="width:145px;" class="form-control">
+                    <option value="0" selected>条件搜：用户名</option>
+                    <option value="1">条件搜：备注</option>
+                    <option value="2">单独搜：其他</option>
+                </select>
+                <input type="text" class="form-control" name="keyword" id="keyword" value="{$keyword}" style="width:150px;" />
+
+                <input type="button" value="查询" onclick="submitform(0)" class="btn btn-success" />
+                <input type="hidden" name="act" id="act" value="search">
+                <input type="button"  onclick="submitform(1)"  value="导出" class="btn btn-info" >
+
+            </form>
+            <!--</form>-->
+        </div>
+    </div>
+    <div style="color: red;">请注意：响铃即代表有新申请的用户，请快速审核，响铃即自会消失。</div>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th><label><input type="checkbox" name="SelAll" id="SelAll" value="1" />全选</label></th>
+                <th name="$header" value="11">编号</th>
+                <th>会员账号</th>
+                <th>项目</th>
+				<th>所属项目</th>
+                <th>彩金</th>
+                <th>备注</th>
+                <th>审核情况</th>
+                <th>申请时间</th>
+                <th width="80">审核时间</th>
+                <th width="80">提交IP</th>
+                <th width="80">操作人</th>
+                <th width="80">账号状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <foreach name="infos" item="v">
+		
+            <if condition="$v.status == 0 && $v.cate_id != 1 && $v.cate_id !=20 ">
+                <audio autoplay="autoplay" src="{$v.yinid}"></audio> 
+            </if>
+
+            <tr>
+                <td><input type="checkbox" class="checkID" name="ids[]" value="{$v.id}" /></td>
+                <td name="$header[1][1]" value="11">A-{$v.id}</td>
+                <td>{$v.username}</td>
+                <td>{$categorys_1[$v['cate_id']]}</td>				
+				<td>	
+				<if condition="$v.cate_id eq 65">   
+
+					<if condition="($v.set_bonus eq '10%')"> 
+						<p>新会员注册彩金</p>
+						<elseif condition="$v.set_bonus eq '20%'" />
+						<p>连续登陆3天</p>
+						<elseif condition="$v.set_bonus eq '35%'" />
+						<p>连续登陆7天</p>
+						<elseif condition="$v.set_bonus eq '40%'" />
+						<p>晋升VIP2彩金</p>
+						<elseif condition="$v.set_bonus eq '50%'" />
+						<p>晋升VIP3彩金</p>
+						
+					</if>
+			</if>
+									
+				
+				</td>
+				
+                <td>{$v.handsel}元</td>
+                <td><a href="javascript:showMemo('{$v.memo}')" >查看</a></td>
+                <td>
+                    <if condition="$v.status eq 0"><span class="label label-info ">未审核</span>
+                        <elseif condition="$v.status eq 1" /><span class="label label-success">审核通过</span>
+                        <elseif condition="$v.status eq 2" /><span class="label label-primary">审核不通过</span>
+                    </if>
+                </td>
+            <td>{$v.addtime|date="Y/m/d H:i:s",###}</td>
+                <td><if condition="$v.audit_time gt 0">{$v.audit_time|date="Y/m/d H:i:s",###}<else/>-</if></td>
+            <td style="width: 15%;height: 40px;">{$v.ip}</td>
+                <td>{$v.edit_user}</td>
+                <input type="hidden" name="goBack" value="{$goBack}" />
+                <td>
+                    <if condition="$v.blacklist eq 0"><span class="label label-info ">账号正常</span>
+                        <elseif condition="$v.blacklist eq 1" /><span class="label label-primary">已拉黑</span>
+                    </if>
+                </td>
+                <td>
+                    <if condition="$v.blacklist eq 0">
+                        <a href="{:U('post/blacklist')}?id={$v.id}">拉黑</a>
+                        <elseif condition="$v.blacklist eq 1" />
+                        <a href="{:U('post/blacklist')}?id={$v.id}">取消拉黑</a>
+                    </if>
+
+
+                    | <a href="{:U('post/update')}?id={$v.id}&p={$p}">编辑</a> | <a href="{:U('post/delete')}?id={$v.id}" style="color:red;" onclick="javascript:return del('您真的确定要删除吗？\n\n删除后将不能恢复!');">删除</a></td>
+            </tr>
+        </foreach>
+
+        </tbody>
+    </table>
+    <div class="">
+        <button name="btnBatchDel" id="btnBatchDel" class="btn btn-warning">批量删除</button>&nbsp&nbsp&nbsp&nbsp
+        <button name="btnBatchPass" id="btnBatchPass" class="btn btn-success">批量审核通过</button>&nbsp&nbsp&nbsp&nbsp
+        <button name="btnBatchNoPass" id="btnBatchNoPass" class="btn btn-success">批量审核不通过</button>
+    </div>
+
+    <div class="clearfix"></div>
+    {$page}
+</div>
+<include file="Public/footer" />
+<script type="text/javascript">
+    function showMemo(content){
+        if(content=="") return;
+        layer.open({
+            title: "查看备注",
+            content: content,
+        });
+    }
+    $(function(){
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#starttime' //指定元素
+        });
+        laydate.render({
+            elem: '#endtime' //指定元素
+        });
+
+        $("#SelAll").click(function() {
+            if($(this).prop("checked") == 1) {
+                $(".checkID").prop("checked", true);
+            }else{
+                $(".checkID").prop("checked", false);
+            }
+        });
+
+
+
+
+
+
+
+        $("#btnBatchDel").click(function(){
+            if($(".checkID:checked").size() <= 0){
+                layer.msg("请选择要删除的记录！");
+                return false;
+            }
+            layer.confirm('是否确定删除？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                var _ids = "";
+                $(".checkID").each(function(){
+                    if($(this).prop("checked")){
+                        _ids += (_ids == "" ? "" : ",") + $(this).val();
+                    }
+                })
+                //layer.msg(_ids);
+                $.ajax({
+                    type: "POST",
+                    url: "{:U('batchDelete')}",
+                    data: {ids: _ids},
+                    dataType: "json",
+                    beforeSend: function(){
+                        layer.load();
+                    },
+                    success: function(res) {
+                        if (res != undefined) {
+                            layer.alert(res.msg, function(){res.status == 1 && window.location.reload()});
+                        }
+                    },
+                    complete: function(){
+                        layer.closeAll('loading');
+                    }
+                });
+            }, function(){
+                layer.closeAll()
+            });
+            //组织id
+        });
+
+
+
+//       批量审核通过
+        $("#btnBatchPass").click(function(){
+            if($(".checkID:checked").size() <= 0){
+                layer.msg("请选择要审核通过的ID！");
+                return false;
+            }
+            layer.prompt({
+                formType: 0,
+                value: '',
+                title: '是否确定审核通过',
+                btn: ['确定','取消'],
+                area: ['800px', '350px'] //自定义文本域宽高
+            }, function(value, index, elem){
+                var _ids = "";
+                $(".checkID").each(function(){
+                    if($(this).prop("checked")){
+                        _ids += (_ids == "" ? "" : ",") + $(this).val();
+                    }
+                });
+                //layer.msg(_ids);
+                $.ajax({
+                    type: "POST",
+                    url: "{:U('batchPass')}",
+                    data: {value:value,ids: _ids},
+                    dataType: "json",
+                    beforeSend: function(){
+                        layer.load();
+                    },
+                    success: function(res) {
+                        if (res != undefined) {
+                            layer.alert(res.msg, function(){res.status == 1 && window.location.reload()});
+                        }
+                    },
+                    complete: function(){
+                    }
+                });
+            }, function(){
+                layer.closeAll()
+            });
+
+            //组织id
+        });
+
+
+//       批量审核不通过
+        $("#btnBatchNoPass").click(function(){
+            if($(".checkID:checked").size() <= 0){
+                layer.msg("请选择要审核不通过的ID！");
+                return false;
+            }
+            layer.prompt({
+                formType: 0,
+                value: '',
+                title: '是否确定审核不通过',
+                btn: ['确定','取消'],
+                area: ['800px', '350px'] //自定义文本域宽高
+            }, function(value, index, elem){
+                var _ids = "";
+                $(".checkID").each(function(){
+                    if($(this).prop("checked")){
+                        _ids += (_ids == "" ? "" : ",") + $(this).val();
+                    }
+                });
+                //layer.msg(_ids);
+                $.ajax({
+                    type: "POST",
+                    url: "{:U('batchNoPass')}",
+                    data: {value:value,ids: _ids},
+                    dataType: "json",
+                    beforeSend: function(){
+                        layer.load();
+                    },
+                    success: function(res) {
+                        if (res != undefined) {
+                            layer.alert(res.msg, function(){res.status == 1 && window.location.reload()});
+                        }
+                    },
+                    complete: function(){
+                    }
+                });
+            }, function(){
+                layer.closeAll()
+            });
+
+            //组织id
+        });
+
+
+
+
+
+
+
+
+
+    });
+    //设置默认,页面加载时恢复默认选项。
+function region_default() {
+    $("option[value='-1']").attr('selected', 'selected');
+}
+function setregion(num, address_id) {
+    var next = num + 1;
+    $.ajax({
+        type: 'POST',
+        //设置json格式,接收返回数组。
+        dataType: 'json',
+        url: '',
+        //ajax传递当前选项的value值,也就是当前的region_id。
+        data: 'region_id=' + $('#region_' + num + '_' + address_id).val(),
+        success: function (msg) {
+            //如果返回值不为空则执行。
+            if (msg != null) {
+                var option_str = '';
+                //循环书写下一个select中要添加的内容。并添加name标记。
+                for (var i = 0; i < msg.length; i++) {
+                    option_str += '<option name="region_' + next + '"value="' + msg[i].id + '">' + msg[i].title + '</option>';
+                }
+                //删除下一个select中标记name为next的内容。
+                $("option[name='region_" + next + "']").remove();
+                //向下一个select中添加书写好的内容。
+                $('#region_' + next + '_' + address_id).append(option_str);
+            } else {
+                //如果返回值为空,则移除所有带标记的option,恢复默认选项。
+                for (var i = next; i <= 4; i++) {
+                    $("option[name='region_" + i + "']").remove();
+                }
+            }
+        }
+    })
+}
+function submitform(type) {
+    $('#act').val(type == 1 ? "export" : "search");
+    $("#myform").submit();
+}
+
+
+
+
+</script>

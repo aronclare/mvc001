@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>XAM优惠活动大厅</title>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no" name="viewport" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-orientation" content="portrait" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#4c516a" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="email=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-orientation" content="portrait" />
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="browsermode" content="application" />
+  <meta name="x5-page-mode" content="app" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/animate.css">
+  <link rel="stylesheet" href="./css/jquery.bxslider.css">
+  <link rel="stylesheet" href="./css/jquery-confirm.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/font/iconfont.css">
+  <link rel="stylesheet" href="./css/layout.css">
+</head>
+
+<body>
+  <div id="mask">
+    <div class="background" onclick="showMenu()"></div>
+  </div>
+  <div id="logo">
+    <div class="w640">
+      <a href="" class="logo"></a>
+    </div>
+  </div>
+  <div id="top">
+    <div class="w640">
+      <div class="title">
+        <h3>审核进度查询</h3>
+      </div>
+      <div class="icon_link left">
+        <a href="javascript:history.go(-1)">
+          <i class="iconfont icon-back"></i>
+        </a>
+      </div>
+      <div class="icon_link right">
+        <a href="./index.htm">
+          <i class="iconfont icon-home"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="app">
+    <div class="form">
+      <dl><dt><label>会员账号：</label></dt>
+        <dd><input type="text" id="username" placeholder="请输入会员账号"></dd>
+      </dl>
+      <dl><dt><label>查询项目：</label></dt>
+        <dd>
+          <dl class="select">
+            <dt><span>请选择查询项目</span><input type="hidden" id="id" value=""></dt>
+            <dd>
+              <a rel_value="1">每月现金回馈</a>
+              <a rel_value="2">乐享新人礼 首存好礼</a>
+              <a rel_value="3">乐享新人礼2 投注有礼</a>
+              <a rel_value="4">新会员100%存送 首存优惠</a>
+              <a rel_value="5">棋牌游戏2 赔率彩金</a>
+              <a rel_value="6">棋牌游戏 日闯关</a>
+              <a rel_value="7">老会员每月一次存送</a>
+              <a rel_value="8">每日第一桶金</a>
+              <a rel_value="9">捕鱼专享-以小博大</a>
+              <a rel_value="10">MG老虎机 亏损救援金</a>
+              <a rel_value="11">每日返利送不停 玩转千炮捕鱼</a>
+              <a rel_value="12">次日额外加赠彩金 玩转PT老虎机</a>
+              <a rel_value="13">老虎机幸运注单 500倍奖金</a>
+              <a rel_value="14">周周派送 激情七天乐</a>
+              <a rel_value="15">额外奖励/更加惊喜 奖上加奖</a>
+              <a rel_value="16">玩“赚”BBIN 天天消除拿大奖</a>
+              <a rel_value="17">真人视讯1 智勇大冲关</a>
+              <a rel_value="18">每月领555元 忠实会员</a>
+              <a rel_value="19">真人视讯2 连续输赢彩金</a>
+              <a rel_value="20">领取丰厚奖金 推荐好友</a>
+              <a rel_value="21">申请加入 VIP贵宾俱乐部</a>
+            </dd>
+            <dd class="more">滑动显示更多游戏<i class="iconfont icon-drop-down"></i></dd>
+          </dl>
+        </dd>
+      </dl>
+      <div class="buttons">
+        <button class="submit_button" onclick="submit_query()">查询审核进度</button>
+      </div>
+    </div>
+    <div class="copyright">
+      Copyright © New Macau Reserved
+    </div>
+  </div>
+  <!-- js -->
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/wordslider.js"></script>
+  <script src="./js/jquery.bxslider.js"></script>
+  <script src="./js/animate.js"></script>
+  <script src="./js/jquery-confirm.min.js"></script>
+  <script src="./js/laydate.js"></script>
+  <script src="./js/custom.js"></script>
+</body>
+
+</html>

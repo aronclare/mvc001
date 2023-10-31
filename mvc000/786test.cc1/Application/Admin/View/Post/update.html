@@ -1,0 +1,239 @@
+<include file="Public/header" title="审核申请信息" />
+<div id="page-wrapper">
+    <form method="post" action="{:U('post/update')}" enctype="multipart/form-data">
+        <input type="hidden" name="goBack" value="{$goBack}" />
+        <div style="float: left; margin:0px 30px;">
+            <div class="form-group">
+                <label>申请会员</label>
+                <p>{$post.username}</p>
+            </div>
+            <div class="form-group">
+                <label for="post-cate">申请项目</label>
+                <p name="cate_id" >
+                    <foreach name="category" item="v">
+                <p>
+                    <?php if($post['cate_id'] == $v['id']) {echo $v['name'] ;}?>
+                </p>
+                </foreach>
+                </p>
+				<if condition="$post.cate_id eq 62">
+				<div class="form-group">
+					<label>被推荐人账号</label>
+					<p>{$post.referral}</p>
+				</div>
+				</if>
+            </div>
+
+            <div class="form-group">
+                <if condition="$post.status eq 0">
+                    <label>彩金</label>
+                    <input type="text" name="handsel" value="" class="form-control" id="name" placeholder="请输入彩金" style="width: 200px;" autocomplete="off" />
+                    <else/>
+                    <label>彩金</label>
+                    <input type="text" name="handsel" value="{$post.handsel}" class="form-control" id="name" placeholder="请输入彩金" style="width: 200px;" autocomplete="off" />
+                </if>
+            </div>
+            <div class="form-group">
+                <label>备注</label>
+                <input type="text" name="memo" id="memo" class="form-control" style="width:500px;" value="{$post.memo}" />
+                <!--<textarea name="memo" class="form-control" style="width: 500px;height: 200px;" id="memo" style="width: 200px;">{$post.memo}</textarea>-->
+            </div>
+            <div class="form-group">
+                <label>审核</label>
+                <label class="radio-inline">
+                    <input type="radio" name="status"  value="0" <if condition="$post.status eq 0">checked="checked"</if> >未审核
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="status"  value="1" <if condition="$post.status eq 1">checked="checked"</if>>审核通过
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="status"  value="2" <if condition="$post.status eq 2">checked="checked"</if>>审核不通过
+                </label>
+            </div>
+            <input type="hidden" name="id" value="{$post.id}">
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+
+
+
+
+<style>
+    .form-group{display:block}
+    .form-group.showw{display: none}
+    .lefts{
+        float: left;
+    }
+    .lefts p {
+        font-size: 20px;
+        color: red;
+    }
+</style>
+<div class="lefts">
+
+<if condition="$post.cate_id eq 65">
+    <div class="form-group showw{$post.set_bonus}">
+        <label>注册彩金</label>
+		<if condition="($post.set_bonus eq '10%')"> 
+        <p>新会员注册彩金</p>
+		<elseif condition="$post.set_bonus eq '20%'" />
+		<p>连续登陆3天</p>
+		<elseif condition="$post.set_bonus eq '35%'" />
+		<p>连续登陆7天</p>
+		<elseif condition="$post.set_bonus eq '40%'" />
+		<p>晋升VIP2彩金</p>
+		<elseif condition="$post.set_bonus eq '50%'" />
+		<p>晋升VIP3彩金</p>
+		</if>
+		
+    </div>
+</if>	
+
+
+
+<if condition="$post.cate_id eq 86">
+    <div class="form-group showw{$post.set_bonus}">
+        <label>方案</label>
+		<if condition="($post.application_type eq '1')"> 
+        <p>方案1</p>
+		<elseif condition="$post.application_type eq '2'" />
+		<p>方案2</p>
+		 
+		</if>
+		
+    </div>
+</if>	
+
+
+
+
+    <div class="form-group showw{$post.effective_betting}">
+        <label>周有效投注</label>
+        <p>{$post.effective_betting|htmlspecialchars}</p>
+    </div>
+
+    <div class="form-group showw{$post.application_date}">
+        <label>连拿时间</label>
+        <p>{$post.application_date|htmlspecialchars}</p>
+    </div>
+
+    <div class="form-group showw{$post.member_name}">
+        <label>会员姓名</label>
+        <p>{$post.member_name|htmlspecialchars}</p>
+    </div>
+
+    <div class="form-group showw{$post.number_participants}">
+        <label>日有效投注</label>
+        <p>{$post.number_participants|htmlspecialchars}</p>
+    </div>
+
+    <div class="form-group showw{$post.can_win_prizes}">
+        <label>注单时间</label>
+        <p>{$post.can_win_prizes|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.losses}">
+        <label>亏损金额</label>
+        <p>{$post.losses|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.contact_qq}">
+        <label>联系QQ</label>
+        <p>{$post.contact_qq|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.note_the_single_amount}">
+        <label>单笔存款金额</label>
+        <p>{$post.note_the_single_amount|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.apply_for_days}">
+        <label>连赢时间</label>
+        <p>{$post.apply_for_days|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.apply_for_customs_number}">
+        <label>申请关数</label>
+        <p>{$post.apply_for_customs_number|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.winner_paid}">
+        <label>申请金额</label>
+        <p>{$post.winner_paid|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.multiple_water}">
+        <label>流水倍数	</label>
+        <p>{$post.multiple_water|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.game_project}">
+        <label>游戏项目</label>
+        <p>{$post.game_project|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.contact_via_mail}">
+        <label>联系邮箱</label>
+        <p>{$post.contact_via_mail|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.note_the_single_code}">
+        <label>申请牌型</label>
+        <p>{$post.note_the_single_code|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.quantity_completion}">
+        <label>连赢局数</label>
+        <p>{$post.quantity_completion|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.profit_quota}">
+        <label>盈利额度</label>
+        <p>{$post.profit_quota|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.application_type}">
+        <label>申请类型</label>
+        <p>{$post.application_type|htmlspecialchars}</p>
+    </div>
+    <div>
+        <label>提交IP</label>
+        <p>{$post.ip}</p>
+    </div>
+    <div>
+        <label>申请时间</label>
+        <p>{$post.addtime|date="Y-m-d H:i:s",###}</p>
+
+    </div>
+    <div class="form-group showw{$post.old_username}">
+        <label>上级ID</label>
+        <p>{$post.old_username|htmlspecialchars}</p>
+
+    </div>
+    <div class="form-group showw{$post.old_name}">
+        <label>会员ID</label>
+        <p>{$post.old_name|htmlspecialchars}</p>
+
+    </div>
+    <div class="form-group showw{$post.old_phone}">
+        <label>注单号后7位</label>
+        <p>{$post.old_phone|htmlspecialchars}</p>
+
+    </div>
+    <div class="form-group showw{$post.new_username}">
+        <label>下级ID</label>
+        <p>{$post.new_username|htmlspecialchars}</p>
+
+    </div>
+    <div class="form-group showw{$post.new_name}">
+        <label>被推荐人微信号</label>
+        <p>{$post.new_name|htmlspecialchars}</p>
+
+    </div>
+    <div class="form-group showw{$post.new_phone}">
+        <label>个人微信号</label>
+        <p>{$post.new_phone|htmlspecialchars}</p>
+    </div>
+    <div class="form-group showw{$post.friends}">
+        <label>邀请好友：</label>
+        <p>{$post.friends|htmlspecialchars}</p>
+    </div>
+	<div class="form-group showw{$post.referees}">
+        <label>推荐人ID：</label>
+        <p>{$post.referees|htmlspecialchars}</p>
+    </div>
+	<div class="form-group showw{$post.referral}">
+        <label>被推荐人手机号：</label>
+        <p>{$post.referral|htmlspecialchars}</p>
+    </div>
+</div>
+
+    </form>
+</div>
+<include file="Public/footer" />

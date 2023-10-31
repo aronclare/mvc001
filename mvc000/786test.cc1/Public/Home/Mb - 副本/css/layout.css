@@ -1,0 +1,72 @@
+#app{max-width:640px;margin:0 auto;z-index:2;padding-top:52px}
+#mask{width:100vw;z-index:-1;height:100vh;position:fixed}
+#mask .background{background:#000;opacity:0;position:relative;width:100%;height:100%;transition:all .6s}
+#mask.show{z-index:9}
+#mask.show .background{opacity:.7}
+#top{position:fixed;z-index:999;left:0;top:0px;width:100%}
+#top .w640{height:52px;background:#0995fd;background:linear-gradient(to right,#00a8ff,#1185fb)}
+#logo{position:relative;z-index:10}
+#logo .w640{height:54px;background:#0995fd;background:linear-gradient(to right,#00a8ff,#1185fb);text-align:center;line-height:54px}
+#logo a.logo{max-width:50vw;height:44px;display:inline-block;vertical-align:middle;background:url(../images/logo.png) center no-repeat;background-size:contain;width:200px;position:relative}
+#top .w640:after{content:'';display:block;width:100%;height:106px;background:url(../images/wave.png) center 50px no-repeat;background-size:100% auto;bottom:0;left:0;position:absolute}
+#top .w640 .title{display:flex;position:relative;z-index:2;flex-direction:column;justify-content:center;text-align:center;height:52px}
+#top .w640 .title img{max-width: 40vw}
+#top .w640 .title h3{font-size:16px;color:#fff;font-weight:700;letter-spacing:2px}
+#top .w640 .title p{color:#fff;font-weight:12px}
+#top .icon_link{width:46px;height:52px;position:absolute;right:0;top:0;text-align:center;line-height:52px;z-index:2}
+#top .icon_link a i{font-size:24px;color:#fff}
+#top .icon_link.left{left:0}
+#menu{background:#3aacde;width:64vw;max-width:410px;height:100vh;position:absolute;right:-64vw;top:52px;transition:all .6s;overflow-y: auto}
+#menu ul li a{font-size:16px;line-height:42px;border-bottom:rgba(255,255,255,.4) 1px solid;display:block;color:#fff;padding-left:16px}
+#menu ul li a i{margin-right:6px}
+#menu.show{right:0}
+#top.fixed{position:fixed;left:0;top:0}
+#top.fixed #menu{height:calc(100vh - 52px)}
+#app .search_box{background:#0995fd;background:linear-gradient(to right,#179df8,#1185fb);padding:10px}
+#app .search_box .model_input{background:#fff;height:34px;line-height:34px;background:#fff;border-radius:17px;}
+#app .search_box .model_input a{display:flex;justify-content:space-between;color:#999;font-size:14px;padding:0 10px;}
+#app .bx-wrapper .bx-pager{bottom:10px}
+#app .bx-wrapper .bx-pager.bx-default-pager a{background:0 0;border:#fff 1px solid;width:12px;height:12px;border-radius:50%;margin:0 3px}
+#app .bx-wrapper .bx-pager.bx-default-pager a.active{background:#fff}
+#marque{height:32px;background:rgba(0,0,0,.6);position:absolute;left:0;top:0;width:100%;display:flex;line-height:32px;font-size:14px}
+#app .slider{position:relative}
+#marque dd{overflow:hidden;white-space:nowrap;padding-right:10px;color:#fff;font-size:12px}
+#marque dt{padding:0 10px;white-space:nowrap;color:#ff0;flex-shrink:0}
+#marque dd span.name,#marque dd span.prize{color:#ff0}
+#app h3.title{font-size:16px;color:#666;padding:8px;background:#fff;margin:6px 0}
+#app .game_list{display:flex;flex-wrap:wrap;padding:0 5px}
+#app .game_list .single{width:50%;padding:10px 5px;background:#fff;margin-bottom:10px;text-align:center;position:relative}
+#app .game_list dl dt{position: relative;border-radius: 6px;overflow: hidden;}
+#app .game_list dl dt p{position: absolute;width: 100%;left: 0;bottom: 0;background: rgba(0,0,0,.7);padding: 6px 0}
+#app .game_list dl dt p a{color:#fff;font-size: 14px;}
+#app .game_list dl dd{display: flex;justify-content: space-between;padding-top: 10px}
+#app .game_list dl dd a{height: 38px;line-height: 38px;background: #47AFE0;display: inline-block;width: calc(50% - 3px);color:#fff;font-size: 14px;border-radius: 6px}
+#app .copyright{color:#999;padding: 20px 0;background: #fff;text-align: center;font-size:16px}
+#app .form{padding:20px 10px;background: #fff;margin-bottom: 20px}
+#app .form>dl{display: flex;padding-bottom: 10px}
+#app .form>dl>dt{width: 106px;flex-shrink: 0}
+#app .form>dl>dt>label{background: #00a8ff;font-size: 16px;color:#ff0;text-align: right;display: block;line-height: 40px;padding-right: 6px;border-radius:  6px 0 0 6px }
+#app .form>dl>dd{flex-grow: 1;position: relative;}
+#app .form>dl>dd input{height: 40px;line-height: 40px;background: #eee;width: 100%;border-radius: 0 6px 6px 0}
+#app .form dl dl dt{width: 100%;background: #eee;height: 40px;line-height: 40px;border-radius: 0 6px 6px 0;font-size: 14px;text-indent: 8px;overflow: hidden;cursor: pointer;}
+#app .form dl dl{position: relative;}
+#app .form dl dl dd{max-height: 0;overflow: hidden;transition: all .6s;}
+#app .form dl dl dd a{display: block;font-size: 14px;background: #eee;color:#666;border-top: #fff 1px solid;line-height: 40px;text-indent: 10px;height: 40px;overflow: hidden;border-radius: 6px}
+#app .form dl dl.select.show dd{max-height:240px;overflow-y: auto}
+#app .form dl dl.select dd.more{width: 100%;height:40px;text-align: center;font-size: 14px;height: 40px;line-height: 40px;color:#47AFE0}
+#app .form dl dl dd::-webkit-scrollbar{width: 4px;}
+#app .form dl dl dd::-webkit-scrollbar-thumb{background: #00a8ff}
+#app .form dl dl dd::-webkit-scrollbar-track{background-color:transparent}
+#app .buttons{padding-top: 20px}
+#app .buttons button.submit_button{height: 42px;line-height: 42px;text-align: center;border-radius: 21px;color:#fff;font-size: 14px;background: #AD004A;width: 100%;background: linear-gradient(to bottom,#9E0057,#BE004C)}
+#app h2.title{text-align: center;color:#1185fb;font-weight: 700;font-size: 16px;}
+#app .form dl dd .vfcode{display: block;position: absolute;right:1px;top:0;height: 38px;line-height: 38px;}
+#app .form dl dd .vfcode img{height: 38px;vertical-align: middle;border-radius: 0 6px 6px 0}
+#app .article{padding:20px 10px;background: #fff;margin-bottom: 20px}
+#app .promotContent{}
+#app .promotContent p strong{display: block;padding: 10px 0;background: #179df8;color:#fff;text-align: center;font-size: 16px;border-radius: 6px;font-weight: normal}
+#app .promotContent p{padding: 10px;font-size: 14px}
+#app .promotContent table{margin-bottom: 20px}
+#app .promotContent table td{background: #eee;padding: 6px 0;border:#fff 1px solid;text-indent: 12px;font-size: 12px}
+#app .promotContent table .firstRow td{background:#59C2FC;color:#fff;padding: 14px 0;text-align: center}
+#app select#id{border:none;width: 100%;height: 40px;line-height: 40px;background: #eee;border-radius: 0 6px 6px 0;}
